@@ -4,7 +4,7 @@ public class Test {
 	public static void test() {
 		
 		System.out.println("Test");
-		System.out.println("E");
+		System.out.println("toto");
 		
 		
 	}
