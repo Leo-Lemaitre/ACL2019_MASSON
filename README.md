@@ -12,6 +12,7 @@ Eclipse: Help-->Install New Software --> http://www.objectaid.com/update/current
 
 
 GESTION DES BRANCHES
+
 Pour savoir dans quelle branche on se situe : 
 git status
 
