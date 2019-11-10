@@ -24,3 +24,7 @@ git checkout nomDeLaBranche
 
 Pour créer une nouvelle branche  :
 git checkout -b nomDeLaNouvelleBranche
+
+Pour push dans une branche :
+git push -u origin nomDeLaBranche
+
