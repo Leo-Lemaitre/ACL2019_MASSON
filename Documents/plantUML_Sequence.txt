@@ -1,0 +1,8 @@
+@startuml
+Game-> Labyrinthe: évoluer()
+Labyrinthe -> Monstre :seDéplacer()
+Monstre -> Heros :attaquer()
+Héro --> Monstre
+Monstre --> Labyrinthe
+Labyrinthe--> Game
+@enduml
