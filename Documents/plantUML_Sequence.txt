@@ -1,8 +1,22 @@
 @startuml
-Game-> Labyrinthe: évoluer()
+Generator --> Game : creer()
+activate Game
+loop !finDuJeu()
+Game-> Labyrinthe: evoluer()
+activate Labyrinthe
 Labyrinthe -> Monstre :seDéplacer()
 Monstre -> Heros :attaquer()
-Héro --> Monstre
+Heros --> Monstre
+Labyrinthe -> Heros :seDéplacer()
+Heros -> Monstre :attaquer()
+Monstre --> Heros
 Monstre --> Labyrinthe
+
 Labyrinthe--> Game
+deactivate Labyrinthe
+Game --> InterfaceGraphique :afficher()
+InterfaceGraphique --> Game
+ end
+
+deactivate Game
 @enduml
