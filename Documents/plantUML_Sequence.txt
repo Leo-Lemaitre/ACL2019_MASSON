@@ -1,22 +1,33 @@
 @startuml
-Generator --> Game : creer()
+Generator --> Game: creer()
 activate Game
 loop !finDuJeu()
-Game-> Labyrinthe: evoluer()
+Game-> Labyrinthe: evoluer(actionUtilisateur)
+alt actionUtilisateur.getType()==DIRECTION
+Labyrinthe ->Heros :seDéplacer(actionUtilisateur)
 activate Labyrinthe
-Labyrinthe -> Monstre :seDéplacer()
-Monstre -> Heros :attaquer()
-Heros --> Monstre
-Labyrinthe -> Heros :seDéplacer()
-Heros -> Monstre :attaquer()
-Monstre --> Heros
-Monstre --> Labyrinthe
 
+Heros --> Labyrinthe
+else actionUtilisateur.getType()==ATTAQUE
+Heros -> Monstres :attaquer()
+Monstres --> Heros
+end
+collections Monstres
+loop [1..listeMonstresVivants.size()]
+Labyrinthe -> Monstres: seDéplacer()
+Monstres --> Labyrinthe
+Monstres -> Heros :attaquer()
+
+end
+Heros --> Monstres
+
+Monstres --> Labyrinthe
 Labyrinthe--> Game
 deactivate Labyrinthe
 Game --> InterfaceGraphique :afficher()
+activate InterfaceGraphique
 InterfaceGraphique --> Game
+deactivate InterfaceGraphique
  end
-
 deactivate Game
 @enduml
