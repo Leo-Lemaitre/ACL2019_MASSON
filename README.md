@@ -10,6 +10,8 @@ L’objectif  de  ce  projet  est  la  réalisation  d’un jeu  mono-utilisateu
 DIAGRAMME DE CLASSES 
 Eclipse: Help-->Install New Software --> http://www.objectaid.com/update/current/site.xml
 
+DIAGRAMME DE SÉQUENCES
+Texte à copier coller dans http://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000
 
 GESTION DES BRANCHES
 
