@@ -1,15 +1,11 @@
 package Model;
 
-public class Pacman {
-
-	private int posX;
-	private int posY;
+public abstract class Character {
+	protected int posX;
+	protected int posY;
+	protected int lifePoint;
 	
-	public Pacman() {
-		this.posX=5;
-		this.posY=5;
-	}
-
+	
 	public int getPosX() {
 		return posX;
 	}
@@ -25,6 +21,4 @@ public class Pacman {
 	public void setPosY(int posY) {
 		this.posY = posY;
 	}
-	
-	
 }
