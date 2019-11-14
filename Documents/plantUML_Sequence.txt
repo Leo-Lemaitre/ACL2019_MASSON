@@ -1,10 +1,19 @@
 @startuml
-Generator --> Game: creer()
+Player -> Manager: start()
+Manager -> Generator:recupListeNiveaux() 
+Generator--> Manager: listeNiveaux
+InterfaceGraphique --> Manager:afficher(listeNiveaux)
+
+Player -> Manager: choisirNiveau_i
+Manager -> Game: creer(i)
+
+Game -> Labyrinthe: creerLab(i)
+Game--> InterfaceGraphique:afficher(jeu)
 activate Game
 loop !finDuJeu()
 Game-> Labyrinthe: evoluer(actionUtilisateur)
 alt actionUtilisateur.getType()==DIRECTION
-Labyrinthe ->Heros :seDéplacer(actionUtilisateur)
+Labyrinthe ->Heros :seDÃ©placer(actionUtilisateur)
 activate Labyrinthe
 
 Heros --> Labyrinthe
@@ -14,7 +23,7 @@ Monstres --> Heros
 end
 collections Monstres
 loop [1..listeMonstresVivants.size()]
-Labyrinthe -> Monstres: seDéplacer()
+Labyrinthe -> Monstres: seDÃ©placer()
 Monstres --> Labyrinthe
 Monstres -> Heros :attaquer()
 
