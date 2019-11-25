@@ -1,5 +1,6 @@
 import java.util.Vector;
 
+
 import Model.Game;
 
 public class Main {
@@ -10,8 +11,13 @@ public class Main {
 			g.play();
 
 			Vector<String> lab = Generator.labyrinthe();
+
 			System.out.println(lab);
 		
-	}
 
+			//System.out.println(lab);
+			Generator.affichage_labyrinthe(lab);
+			
+			
+	}
 }

@@ -50,12 +50,11 @@ public static void affichage_labyrinthe(Vector<String> lab) {
 		// Affichage du labyrinthe
 		System.out.println(scLigne.nextLine());
 	}*/
-	//lab2[] = convertVectorToArray(lab);
-	for(int i=0;i<7;i++) {
-		for(int j=0;j<20;j++) {
-			System.out.println();
+	//String lab2[][] = lab.toArray(new String[lab.size()]);
+		for(int i=0;i<7;i++) {
+			System.out.println(lab.get(i));
 		}
-	}
+	
 
 }
 
