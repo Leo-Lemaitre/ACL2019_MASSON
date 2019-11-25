@@ -91,7 +91,15 @@ public class Labyrinthe {
 
 	@Override
 	public String toString() {
-		return "Labyrinthe [grid=" + Arrays.toString(grid) + "]";
+		String str = "";
+		for(int i = 0; i< grid.length; i++) {
+			for(int j = 0; j< grid.length; j++) {
+				str+=grid[i][j];
+			}
+			str+="\n";
+		}
+		
+		return str;
 	}
 	
 
