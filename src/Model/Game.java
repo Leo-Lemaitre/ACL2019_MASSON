@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,7 +9,7 @@ import View.InterfaceConsole;
 
 public class Game {
 
-	private Labyrinthe Laby;
+	private Labyrinthe laby;
 	private Heros heros;
 	private ArrayList<Monsters> monsters;
 	private ArrayList<Trigger> triggers;
@@ -16,23 +17,20 @@ public class Game {
 	private InterfaceConsole gui;
 	private Controler controler;
 
-	public final static int[] HAUT = new int[] { 0, -1 };
-	public final static int[] BAS = new int[] { 0, 1 };
-	public final static int[] GAUCHE = new int[] { -1, 0 };
-	public final static int[] DROITE = new int[] { 1, 0 };
-	public final static int[][] DIRECTIONS = new int[][] { HAUT, GAUCHE, BAS, DROITE };
-	public Game() {
-		this.gui=new InterfaceConsole();
+	public Game() throws IOException {
+		this.gui = new InterfaceConsole();
 		this.controler = new Controler(heros, gui);
-		this.heros=new Heros();
+		this.heros = new Heros();
+		this.laby=new Labyrinthe();
+		this.heros.mettre_Heros_sur_plateau(laby, this.heros.getPosX(), this.heros.getPosY());
 	}
 
 	public Labyrinthe getLaby() {
-		return Laby;
+		return laby;
 	}
 
 	public void setLaby(Labyrinthe laby) {
-		Laby = laby;
+		laby = laby;
 	}
 
 	public Heros getHeros() {
@@ -66,34 +64,34 @@ public class Game {
 	public void setT(Tresor t) {
 		T = t;
 	}
-	
-	
 
 	public void play() {
-		Scanner sc=new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		while (true) {
-			System.out.println("Position du heros : "+this.heros.getPosX()+";"+this.heros.getPosY());
-		//	Commande c=controler.getCommande(); quand interface graphique
-			Commande c =new Commande(sc.next());
+			 System.out.println(laby);
+			System.out.println("Position du heros : " + this.heros.getPosX() + ";" + this.heros.getPosY());
+			// Commande c=controler.getCommande(); quand interface graphique
+			// Commande c =new Commande(sc.next());
+			String c = sc.next();
 			this.evoluer(c);
 		}
 	}
 
-	private void evoluer(Commande c) {
-System.out.println(c);
-		if(c.getCommande().equals("Haut")) {
-			this.heros.changerPosition(HAUT);
+	private void evoluer(String c) {
+		System.out.println(c);
+		if (c.equals("Haut")) {
+			this.heros.changerPosition(Utilitaires.HAUT);
 		}
-		if(c.getCommande().equals("Bas")) {
-			this.heros.changerPosition(BAS);
+		if (c.equals("Bas")) {
+			this.heros.changerPosition(Utilitaires.BAS);
 		}
-		if(c.getCommande().equals("Gauche")) {
-			this.heros.changerPosition(GAUCHE);
+		if (c.equals("Gauche")) {
+			this.heros.changerPosition(Utilitaires.GAUCHE);
 		}
-		if(c.getCommande().equals("Droite")) {
-			this.heros.changerPosition(DROITE);
+		if (c.equals("Droite")) {
+			this.heros.changerPosition(Utilitaires.DROITE);
 		}
-		
+
 	}
 
 }

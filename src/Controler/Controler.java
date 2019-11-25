@@ -3,8 +3,7 @@ package Controler;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import Model.Commande;
-import Model.Game;
+
 import Model.Heros;
 import View.InterfaceConsole;
 
@@ -12,12 +11,12 @@ public class Controler implements KeyListener {
 
 	private Heros modelHeros;
 	private InterfaceConsole view;
-	private Commande c;
+
 
 	public Controler(Heros model, InterfaceConsole view) {
 		this.modelHeros = model;
 		this.view = view;
-		this.c = new Commande(null);
+		
 	}
 
 	@Override
@@ -33,8 +32,8 @@ public class Controler implements KeyListener {
 		case KeyEvent.VK_UP:
 			System.out.println("Haut");
 
-			this.c = new Commande("Haut");
-			this.c = new Commande("Haut");
+		//	this.c = new Commande("Haut");
+			//this.c = new Commande("Haut");
 			break;
 		case KeyEvent.VK_DOWN:
 			System.out.println("Bas");
@@ -58,9 +57,9 @@ public class Controler implements KeyListener {
 		// TODO Auto-generated method stub
 
 	}
-
+/*
 	public Commande getCommande() {
 		return this.c;
 	}
-
+*/
 }

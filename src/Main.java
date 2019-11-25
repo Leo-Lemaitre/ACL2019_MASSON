@@ -1,23 +1,17 @@
+import java.io.IOException;
 import java.util.Vector;
 
-
 import Model.Game;
+import Model.Labyrinthe;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
-			Game g=new Game();
-			g.play();
+		Game g = new Game();
+		g.play();
 
-			Vector<String> lab = Generator.labyrinthe();
+		 //Generator.affichage_labyrinthe(lab);
 
-			System.out.println(lab);
-		
-
-			//System.out.println(lab);
-			Generator.affichage_labyrinthe(lab);
-			
-			
 	}
 }
