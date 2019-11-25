@@ -1,9 +1,10 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
-import View.InterfaceGraphique;
-
+import Controler.Controler;
+import View.InterfaceConsole;
 
 public class Game {
 
@@ -12,10 +13,18 @@ public class Game {
 	private ArrayList<Monsters> monsters;
 	private ArrayList<Trigger> triggers;
 	private Tresor T;
-	private InterfaceGraphique gui;
+	private InterfaceConsole gui;
+	private Controler controler;
 
+	public final static int[] HAUT = new int[] { 0, -1 };
+	public final static int[] BAS = new int[] { 0, 1 };
+	public final static int[] GAUCHE = new int[] { -1, 0 };
+	public final static int[] DROITE = new int[] { 1, 0 };
+	public final static int[][] DIRECTIONS = new int[][] { HAUT, GAUCHE, BAS, DROITE };
 	public Game() {
-		
+		this.gui=new InterfaceConsole();
+		this.controler = new Controler(heros, gui);
+		this.heros=new Heros();
 	}
 
 	public Labyrinthe getLaby() {
@@ -57,19 +66,34 @@ public class Game {
 	public void setT(Tresor t) {
 		T = t;
 	}
-
-	public InterfaceGraphique getGui() {
-		return gui;
-	}
-
-	public void setGui(InterfaceGraphique gui) {
-		this.gui = gui;
-	}
+	
+	
 
 	public void play() {
-		while(true) {
-			
+		Scanner sc=new Scanner(System.in);
+		while (true) {
+			System.out.println("Position du heros : "+this.heros.getPosX()+";"+this.heros.getPosY());
+		//	Commande c=controler.getCommande(); quand interface graphique
+			Commande c =new Commande(sc.next());
+			this.evoluer(c);
 		}
-	};
+	}
+
+	private void evoluer(Commande c) {
+System.out.println(c);
+		if(c.getCommande().equals("Haut")) {
+			this.heros.changerPosition(HAUT);
+		}
+		if(c.getCommande().equals("Bas")) {
+			this.heros.changerPosition(BAS);
+		}
+		if(c.getCommande().equals("Gauche")) {
+			this.heros.changerPosition(GAUCHE);
+		}
+		if(c.getCommande().equals("Droite")) {
+			this.heros.changerPosition(DROITE);
+		}
+		
+	}
 
 }

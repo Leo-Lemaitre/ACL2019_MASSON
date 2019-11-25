@@ -3,19 +3,21 @@ package Controler;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import Model.Commande;
 import Model.Game;
+import Model.Heros;
+import View.InterfaceConsole;
 
 public class Controler implements KeyListener {
 
-	public final static int[] HAUT = new int[] { 0, -1 };
-	public final static int[] BAS = new int[] { 0, 1 };
-	public final static int[] GAUCHE = new int[] { -1, 0 };
-	public final static int[] DROITE = new int[] { 1, 0 };
-	public final static int[][] DIRECTIONS = new int[][] { HAUT, GAUCHE, BAS, DROITE };
-	private Game game;
+	private Heros modelHeros;
+	private InterfaceConsole view;
+	private Commande c;
 
-	Controler(Game g) {
-		this.game = g;
+	public Controler(Heros model, InterfaceConsole view) {
+		this.modelHeros = model;
+		this.view = view;
+		this.c = new Commande(null);
 	}
 
 	@Override
@@ -30,17 +32,22 @@ public class Controler implements KeyListener {
 		switch (keyCode) {
 		case KeyEvent.VK_UP:
 			System.out.println("Haut");
-		this.game.getHeros().changerPosition(HAUT);
+
+			this.c = new Commande("Haut");
+			this.c = new Commande("Haut");
 			break;
 		case KeyEvent.VK_DOWN:
 			System.out.println("Bas");
-			this.game.getHeros().changerPosition(BAS);
+
 			break;
 		case KeyEvent.VK_LEFT:
-			this.game.getHeros().changerPosition(GAUCHE);
+
 			break;
 		case KeyEvent.VK_RIGHT:
-			this.game.getHeros().changerPosition(DROITE);
+
+			break;
+		default:
+			System.out.println("Touche non reconnue");
 			break;
 		}
 
@@ -50,6 +57,10 @@ public class Controler implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public Commande getCommande() {
+		return this.c;
 	}
 
 }
