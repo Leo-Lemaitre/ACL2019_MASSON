@@ -1,9 +1,11 @@
-import Model.Game;
+import java.util.Vector;
 
 public class Main {
 
-	public static void mains(String[] args) {
-			Game g=new Game();
+	public static void main(String[] args) {
+			Vector<String> lab = Generator.labyrinthe();
+			System.out.println(lab);
+			//Generator.affichage_labyrinthe();
 	}
 
 }
