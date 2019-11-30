@@ -1,25 +1,17 @@
 package Model;
 
 public abstract class Character {
-	protected int posX;
-	protected int posY;
+	protected int posLigne;
+	protected int posColonne;
 	protected int lifePoint;
-
-	public int getPosX() {
-		return posX;
-	}
-
-	public void setPosX(int posX) {
-		this.posX = posX;
-	}
+	protected char type;
 
 	public void changerPosition(int[] direction) {
 		if (deplacementPossible(direction)) {
-			Labyrinthe.setTypeOfCase(this.getPosY(), this.getPosX(), ' ');
-			this.setPosX(this.getPosX() + direction[0]);
-			this.setPosY(this.getPosY() + direction[1]);
-			// changer le O pour les monstres variables
-			Labyrinthe.setTypeOfCase(this.getPosY(),this.getPosX(), 'O');
+			Labyrinthe.setTypeOfCase(this.getPosLigne(), this.getPosColonne(), Utilitaires.VIDE);
+			this.setPosLigne(this.getPosLigne() + direction[0]);
+			this.setPosColonne(this.getPosColonne() + direction[1]);
+			Labyrinthe.setTypeOfCase(this.getPosLigne(), this.getPosColonne(), type);
 		} else {
 			System.out.println("Deplacement impossible");
 		}
@@ -27,11 +19,28 @@ public abstract class Character {
 
 	public abstract boolean deplacementPossible(int[] direction);
 
-	public int getPosY() {
-		return posY;
+	public int getPosLigne() {
+		return posLigne;
 	}
 
-	public void setPosY(int posY) {
-		this.posY = posY;
+	public void setPosLigne(int posLigne) {
+		this.posLigne = posLigne;
 	}
+
+	public int getPosColonne() {
+		return posColonne;
+	}
+
+	public void setPosColonne(int posColonne) {
+		this.posColonne = posColonne;
+	}
+
+	public int getLifePoint() {
+		return lifePoint;
+	}
+
+	public void setLifePoint(int lifePoint) {
+		this.lifePoint = lifePoint;
+	}
+
 }

@@ -3,25 +3,21 @@ package Controler;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-
 import Model.Heros;
+import Model.Utilitaires;
+import View.GraphicalInterface;
 import View.InterfaceConsole;
 
 public class Controler implements KeyListener {
 
 	private Heros modelHeros;
-	private InterfaceConsole view;
 
-
-	public Controler(Heros model, InterfaceConsole view) {
+	public Controler(Heros model) {
 		this.modelHeros = model;
-		this.view = view;
-		
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -32,17 +28,21 @@ public class Controler implements KeyListener {
 		case KeyEvent.VK_UP:
 			System.out.println("Haut");
 
-		//	this.c = new Commande("Haut");
-			//this.c = new Commande("Haut");
+			modelHeros.changerPosition(Utilitaires.HAUT);
 			break;
 		case KeyEvent.VK_DOWN:
 			System.out.println("Bas");
+			modelHeros.changerPosition(Utilitaires.BAS);
 
 			break;
 		case KeyEvent.VK_LEFT:
+			System.out.println("gauche");
+			modelHeros.changerPosition(Utilitaires.GAUCHE);
 
 			break;
 		case KeyEvent.VK_RIGHT:
+			System.out.println("droite");
+			modelHeros.changerPosition(Utilitaires.DROITE);
 
 			break;
 		default:
@@ -57,9 +57,4 @@ public class Controler implements KeyListener {
 		// TODO Auto-generated method stub
 
 	}
-/*
-	public Commande getCommande() {
-		return this.c;
-	}
-*/
 }
