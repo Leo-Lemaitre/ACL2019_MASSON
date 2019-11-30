@@ -41,18 +41,34 @@ public class Labyrinthe {
 		this.grid = grid;
 	}
 
-	public static char getTypeOfCase(int x, int y) {
-		if (x >= 0 && x <= nbColonnes && y >= 0 && y <= nbLignes) {
-			return grid[x][y];
+	public static char getTypeOfCase(int ligne, int colonne) {
+		if (ligne >= 0 && ligne <= nbLignes && colonne >= 0 && colonne <= nbColonnes) {
+			return grid[ligne][colonne];
 		}
 		System.out.println("En dehors des limites");
 		return '?';
 
 	}
 	
-	public static void setTypeOfCase(int x, int y, char type) {
-		grid[x][y]=type;
+	public static void setTypeOfCase(int ligne, int colonne, char type) {
+		grid[ligne][colonne]=type;
 
+	}
+
+	public  int getNbColonnes() {
+		return nbColonnes;
+	}
+
+	public  void setNbColonnes(int nbColonnes) {
+		Labyrinthe.nbColonnes = nbColonnes;
+	}
+
+	public  int getNbLignes() {
+		return nbLignes;
+	}
+
+	public  void setNbLignes(int nbLignes) {
+		Labyrinthe.nbLignes = nbLignes;
 	}
 
 	@Override

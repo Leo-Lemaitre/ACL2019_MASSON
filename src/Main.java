@@ -6,12 +6,8 @@ import Model.Labyrinthe;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException {
-
+	public static void main(String[] args) throws IOException, InterruptedException {
 		Game g = new Game();
 		g.play();
-
-		 //Generator.affichage_labyrinthe(lab);
-
 	}
 }
