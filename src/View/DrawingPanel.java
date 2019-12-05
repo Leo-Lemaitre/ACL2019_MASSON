@@ -1,6 +1,5 @@
 package View;
 
-import java.awt.Color;
 /**
  * @author Horatiu Cirstea, Vincent Thomas
  *
@@ -11,9 +10,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-import Model.Heros;
-
-public class DrawingPanel extends JPanel {
+public class DrawingPanel extends JPanel  {
 
 	/**
 	 * 
@@ -52,8 +49,8 @@ public class DrawingPanel extends JPanel {
 	 */
 	public DrawingPanel(GamePainter painter) {
 		super();
-		this.width =  painter.getWidth();
-		this.height =  painter.getHeight();
+		this.width = painter.getWidth();
+		this.height = painter.getHeight();
 		this.setPreferredSize(new Dimension(this.width, this.height));
 		this.painter = painter;
 
@@ -91,9 +88,10 @@ public class DrawingPanel extends JPanel {
 	 */
 	public void paint(Graphics g) {
 		super.paint(g);
-		g.drawImage(this.currentImage, 0, 0, getWidth(), getHeight(), 0, 0,
-				getWidth(), getHeight(), null);
-		
+		g.drawImage(this.currentImage, 0, 0, getWidth(), getHeight(), 0, 0, getWidth(), getHeight(), null);
+
 	}
+
+	
 
 }
