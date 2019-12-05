@@ -1,6 +1,8 @@
 package Model;
 
-public abstract class Character {
+import java.util.Observable;
+
+public abstract class Character extends Observable {
 	protected int posLigne;
 	protected int posColonne;
 	protected int lifePoint;
@@ -12,6 +14,8 @@ public abstract class Character {
 			this.setPosLigne(this.getPosLigne() + direction[0]);
 			this.setPosColonne(this.getPosColonne() + direction[1]);
 			Labyrinthe.setTypeOfCase(this.getPosLigne(), this.getPosColonne(), type);
+			 setChanged();
+		     notifyObservers();
 		} else {
 			System.out.println("Deplacement impossible");
 		}

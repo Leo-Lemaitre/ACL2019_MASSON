@@ -1,6 +1,9 @@
 package Model;
 
-public class Heros extends Character {
+import java.util.Observable;
+import java.util.Observer;
+
+public class Heros extends Character{
 
 	
 	
@@ -24,5 +27,7 @@ public class Heros extends Character {
 		return true;
 		return false;
 	}
+
+
 	
 }

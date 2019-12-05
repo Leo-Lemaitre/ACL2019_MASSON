@@ -3,6 +3,8 @@ package View;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JFrame;
 
@@ -15,7 +17,7 @@ import Controler.Controler;
  * interface graphique avec son controller et son afficheur
  *
  */
-public class GraphicalInterface  {
+public class GraphicalInterface implements Observer {
 
 	/**
 	 * le Panel pour l'afficheur
@@ -53,6 +55,13 @@ public class GraphicalInterface  {
 	public void paint() {
 		System.out.println("Méthode paint");
 		this.panel.drawGame();	
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		System.out.println("Maj Observer");
+		paint();
+		
 	}
 	
 }
