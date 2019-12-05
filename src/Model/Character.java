@@ -14,14 +14,23 @@ public abstract class Character extends Observable {
 			this.setPosLigne(this.getPosLigne() + direction[0]);
 			this.setPosColonne(this.getPosColonne() + direction[1]);
 			Labyrinthe.setTypeOfCase(this.getPosLigne(), this.getPosColonne(), type);
-			 setChanged();
-		     notifyObservers();
+			update();
 		} else {
 			System.out.println("Deplacement impossible");
 		}
 	}
 
 	public abstract boolean deplacementPossible(int[] direction);
+
+	public void mettre_sur_plateau(Labyrinthe lab, int ligne, int colonne) {
+		lab.setTypeOfCase(ligne, colonne, this.type);
+		update();
+	}
+
+	public void update() {
+		setChanged();
+		notifyObservers();
+	}
 
 	public int getPosLigne() {
 		return posLigne;

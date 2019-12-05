@@ -5,20 +5,17 @@ import java.awt.event.KeyListener;
 
 import Model.Heros;
 import Model.Utilitaires;
-import View.GraphicalInterface;
-import View.InterfaceConsole;
 
-public class Controler implements KeyListener {
+public class Controller implements KeyListener {
 
 	private Heros modelHeros;
 
-	public Controler(Heros model) {
+	public Controller(Heros model) {
 		this.modelHeros = model;
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-
 	}
 
 	@Override
@@ -26,22 +23,17 @@ public class Controler implements KeyListener {
 		int keyCode = e.getKeyCode();
 		switch (keyCode) {
 		case KeyEvent.VK_UP:
-			System.out.println("Haut");
-
 			modelHeros.changerPosition(Utilitaires.HAUT);
 			break;
 		case KeyEvent.VK_DOWN:
-			System.out.println("Bas");
 			modelHeros.changerPosition(Utilitaires.BAS);
 
 			break;
 		case KeyEvent.VK_LEFT:
-			System.out.println("gauche");
 			modelHeros.changerPosition(Utilitaires.GAUCHE);
 
 			break;
 		case KeyEvent.VK_RIGHT:
-			System.out.println("droite");
 			modelHeros.changerPosition(Utilitaires.DROITE);
 
 			break;
@@ -54,7 +46,21 @@ public class Controler implements KeyListener {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
+	}
 
+	public void evoluer(String c) {
+		if (c.equals("Haut")) {
+			this.modelHeros.changerPosition(Utilitaires.HAUT);
+		}
+		if (c.equals("Bas")) {
+			this.modelHeros.changerPosition(Utilitaires.BAS);
+		}
+		if (c.equals("Gauche")) {
+			this.modelHeros.changerPosition(Utilitaires.GAUCHE);
+		}
+		if (c.equals("Droite")) {
+			this.modelHeros.changerPosition(Utilitaires.DROITE);
+		}
+	
 	}
 }

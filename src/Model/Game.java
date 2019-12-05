@@ -4,8 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Controler.Controler;
-import View.AffichageLabyrinthe;
+import Controler.Controller;
+import View.AffichageConsole;
+import View.AffichageGraphiqueLabyrinthe;
 import View.GamePainter;
 import View.GraphicalInterface;
 
@@ -13,25 +14,50 @@ public class Game {
 
 	private Labyrinthe laby;
 	private Heros heros;
+	private GraphicalInterface gui;
+	private Controller controller;
+	private GamePainter gamePainter;
+	private AffichageConsole affichageConsole;
+
 	private ArrayList<Monsters> monsters;
 	private ArrayList<Trigger> triggers;
 	private Tresor T;
-	private GraphicalInterface gui;
-	private Controler controler;
-	private AffichageLabyrinthe affichelab;
-	private GamePainter gamePainter;
+
+	public Game(boolean gui) throws IOException {
+		this.init(gui);
+		if (gui) {
+			this.gamePainter = new AffichageGraphiqueLabyrinthe(this.laby);
+			this.gui = new GraphicalInterface(this.gamePainter, this.controller);
+			this.heros.addObserver(this.gui);
+			this.gui.paint();
+		} else {
+			this.affichageConsole = new AffichageConsole(this.laby);
+			this.heros.addObserver(this.affichageConsole);
+			this.affichageConsole.draw();
+		}
+	}
 
 	public Game() throws IOException {
 		this.heros = new Heros();
-
 		this.laby = new Labyrinthe();
-		this.controler = new Controler(heros);
-		this.gamePainter = new AffichageLabyrinthe(this.laby);
-		this.gui = new GraphicalInterface(this.gamePainter, this.controler);
-		this.heros.mettre_Heros_sur_plateau(laby, this.heros.getPosLigne(), this.heros.getPosColonne());
-		this.heros.addObserver(this.gui);
+		this.controller = new Controller(heros);
+		this.affichageConsole = new AffichageConsole(this.laby);
+		this.heros.mettre_sur_plateau(laby, this.heros.getPosLigne(), this.heros.getPosColonne());
+		this.heros.addObserver(this.affichageConsole);
 		// this.heros.addObserver(o);
+	}
 
+	public void init(boolean gui) throws IOException {
+		this.heros = new Heros();
+		this.laby = new Labyrinthe();
+		this.controller = new Controller(heros);
+		this.heros.mettre_sur_plateau(laby, this.heros.getPosLigne(), this.heros.getPosColonne());
+	}
+
+	public void play() throws InterruptedException {
+		Scanner sc = new Scanner(System.in);
+		while (true)
+			this.controller.evoluer(sc.next());
 	}
 
 	public Labyrinthe getLaby() {
@@ -72,30 +98,6 @@ public class Game {
 
 	public void setT(Tresor t) {
 		T = t;
-	}
-
-	public void play() throws InterruptedException {
-		Scanner sc = new Scanner(System.in);
-		this.gui.paint();
-		while (true)
-			this.evoluer(sc.next());
-	}
-
-	private void evoluer(String c) {
-		System.out.println(c);
-		if (c.equals("Haut")) {
-			this.heros.changerPosition(Utilitaires.HAUT);
-		}
-		if (c.equals("Bas")) {
-			this.heros.changerPosition(Utilitaires.BAS);
-		}
-		if (c.equals("Gauche")) {
-			this.heros.changerPosition(Utilitaires.GAUCHE);
-		}
-		if (c.equals("Droite")) {
-			this.heros.changerPosition(Utilitaires.DROITE);
-		}
-
 	}
 
 }

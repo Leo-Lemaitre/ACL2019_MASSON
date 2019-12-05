@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 /**
  * @author Horatiu Cirstea, Vincent Thomas
  * 
- * represente la maniere de dessiner sur un JPanel
+ *         represente la maniere de dessiner sur un JPanel
  * 
  */
 public interface GamePainter {
@@ -22,5 +22,5 @@ public interface GamePainter {
 	public abstract int getWidth();
 
 	public abstract int getHeight();
-	
+
 }

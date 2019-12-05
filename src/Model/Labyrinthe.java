@@ -7,13 +7,11 @@ import java.util.Arrays;
 import java.util.Vector;
 
 public class Labyrinthe {
-	// A modifier enlever static
 	private static char[][] grid;
 	private static int nbColonnes;
 	private static int nbLignes;
 
 	public Labyrinthe() throws IOException {
-
 		BufferedReader reader = new BufferedReader(new FileReader("Labyrinthe.txt"));
 		String lec;
 		lec = reader.readLine();
@@ -33,14 +31,6 @@ public class Labyrinthe {
 		}
 	}
 
-	public char[][] getGrid() {
-		return grid;
-	}
-
-	public void setGrid(char[][] grid) {
-		this.grid = grid;
-	}
-
 	public static char getTypeOfCase(int ligne, int colonne) {
 		if (ligne >= 0 && ligne <= nbLignes && colonne >= 0 && colonne <= nbColonnes) {
 			return grid[ligne][colonne];
@@ -48,27 +38,6 @@ public class Labyrinthe {
 		System.out.println("En dehors des limites");
 		return '?';
 
-	}
-	
-	public static void setTypeOfCase(int ligne, int colonne, char type) {
-		grid[ligne][colonne]=type;
-
-	}
-
-	public  int getNbColonnes() {
-		return nbColonnes;
-	}
-
-	public  void setNbColonnes(int nbColonnes) {
-		Labyrinthe.nbColonnes = nbColonnes;
-	}
-
-	public  int getNbLignes() {
-		return nbLignes;
-	}
-
-	public  void setNbLignes(int nbLignes) {
-		Labyrinthe.nbLignes = nbLignes;
 	}
 
 	@Override
@@ -82,6 +51,35 @@ public class Labyrinthe {
 		}
 
 		return str;
+	}
+
+	public static void setTypeOfCase(int ligne, int colonne, char type) {
+		grid[ligne][colonne] = type;
+
+	}
+
+	public char[][] getGrid() {
+		return grid;
+	}
+
+	public void setGrid(char[][] grid) {
+		this.grid = grid;
+	}
+
+	public int getNbColonnes() {
+		return nbColonnes;
+	}
+
+	public void setNbColonnes(int nbColonnes) {
+		Labyrinthe.nbColonnes = nbColonnes;
+	}
+
+	public int getNbLignes() {
+		return nbLignes;
+	}
+
+	public void setNbLignes(int nbLignes) {
+		Labyrinthe.nbLignes = nbLignes;
 	}
 
 }

@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-public class DrawingPanel extends JPanel  {
+public class DrawingPanel extends JPanel {
 
 	/**
 	 * 
@@ -64,17 +64,14 @@ public class DrawingPanel extends JPanel  {
 	 * nouvelle image vide sur laquelle dessiner
 	 */
 	public void drawGame() {
-		System.out.println("Passage dans drawGame ");
 		// generer la nouvelle image
 		this.painter.draw(this.nextImage);
-
 		// inverses les images doublebuffereing
 		BufferedImage temp = this.currentImage;
 		// l'image a dessiner est celle qu'on a construite
 		this.currentImage = this.nextImage;
 		// l'ancienne image est videe
 		this.nextImage = temp;
-		System.out.println();
 		this.nextImage.getGraphics().fillRect(0, 0, this.width, this.height);
 		// met a jour l'image a afficher sur le panel
 		this.repaint();
@@ -91,7 +88,5 @@ public class DrawingPanel extends JPanel  {
 		g.drawImage(this.currentImage, 0, 0, getWidth(), getHeight(), 0, 0, getWidth(), getHeight(), null);
 
 	}
-
-	
 
 }
