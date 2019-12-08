@@ -29,6 +29,7 @@ public class Game {
 			this.gamePainter = new AffichageGraphiqueLabyrinthe(this.laby);
 			this.gui = new GraphicalInterface(this.gamePainter, this.controller);
 			this.heros.addObserver(this.gui);
+
 			this.gui.paint();
 		} else {
 			this.affichageConsole = new AffichageConsole(this.laby);
@@ -49,9 +50,18 @@ public class Game {
 
 	public void init(boolean gui) throws IOException {
 		this.heros = new Heros();
+		
+		this.monsters = new ArrayList<Monsters>();
+		Monsters.AddMonsters(monsters);
+
 		this.laby = new Labyrinthe();
 		this.controller = new Controller(heros);
+
 		this.heros.mettre_sur_plateau(laby, this.heros.getPosLigne(), this.heros.getPosColonne());
+		
+		for(Monsters m : monsters) {
+			m.mettre_sur_plateau(laby, m.getPosLigne(),m.getPosColonne());
+		}
 	}
 
 	public void play() throws InterruptedException {

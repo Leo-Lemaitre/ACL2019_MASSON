@@ -5,6 +5,7 @@ public final class Utilitaires {
 	public static final char MUR = 'X';
 	public static final char VIDE = ' ';
 	public static final char HEROS = 'O';
+	public static final char MONSTERS = 'Y';
 
 	// Ligne puis colonne
 	public final static int[] HAUT = new int[] { -1, 0 };

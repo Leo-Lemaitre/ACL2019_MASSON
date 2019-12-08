@@ -31,6 +31,9 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 				case Utilitaires.HEROS:
 					g.setColor(Color.YELLOW);
 					break;
+				case Utilitaires.MONSTERS:
+					g.setColor(Color.BLUE);
+					break;
 				}
 				g.fillRect(colonne * Utilitaires.tailleCaseLaby, ligne * Utilitaires.tailleCaseLaby,
 						Utilitaires.tailleCaseLaby, Utilitaires.tailleCaseLaby);
