@@ -14,8 +14,16 @@ public class Heros extends Character {
 	@Override
 	public boolean deplacementPossible(int[] direction) {
 		if (Labyrinthe.getTypeOfCase(this.getPosLigne() + direction[0],
-				this.getPosColonne() + direction[1]) == Utilitaires.VIDE)
+				this.getPosColonne() + direction[1]) == Utilitaires.VIDE || Labyrinthe.getTypeOfCase(this.getPosLigne() + direction[0],
+						this.getPosColonne() + direction[1]) == Utilitaires.TRAP) {
+			
+			if(Labyrinthe.getTypeOfCase(this.getPosLigne() + direction[0],
+					this.getPosColonne() + direction[1]) == Utilitaires.TRAP) {
+				//Trap.effect();
+				}
+	
 			return true;
+			}
 		return false;
 	}
 

@@ -53,14 +53,21 @@ public class Game {
 		
 		this.monsters = new ArrayList<Monsters>();
 		Monsters.AddMonsters(monsters);
-
+		
+		this.triggers = new ArrayList<Trigger>();
+		Trigger.AddTrigger(triggers);
+		
 		this.laby = new Labyrinthe();
+		
 		this.controller = new Controller(heros);
 
 		this.heros.mettre_sur_plateau(laby, this.heros.getPosLigne(), this.heros.getPosColonne());
 		
 		for(Monsters m : monsters) {
 			m.mettre_sur_plateau(laby, m.getPosLigne(),m.getPosColonne());
+		}
+		for(Trigger t : triggers) {
+			t.mettre_sur_plateau(laby, t.getPosLigne(),t.getPosColonne());
 		}
 	}
 
