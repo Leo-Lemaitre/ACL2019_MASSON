@@ -8,7 +8,7 @@ public abstract class Trigger {
 	protected int posColonne;
 	protected char type;
 	
-	public abstract  void effect();
+	//public abstract void effect();
 
 
 	public static void AddTrigger(ArrayList<Trigger> trigger) {

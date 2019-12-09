@@ -1,11 +1,11 @@
 package Model;
 
-public class Tresor extends Trigger{
+public class Tresor extends Trigger {
 
-	@Override
+	// @Override
 	public void effect() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
