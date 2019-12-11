@@ -34,6 +34,7 @@ public class Controller implements KeyListener {
 
 			break;
 		case KeyEvent.VK_RIGHT:
+			
 			modelHeros.changerPosition(Utilitaires.DROITE);
 
 			break;

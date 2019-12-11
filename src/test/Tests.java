@@ -13,7 +13,7 @@ import Model.Labyrinthe;
 import Model.Utilitaires;
 
 public class Tests {
-
+/*
 	static Heros heros=null;
 	static Labyrinthe l;
 	
@@ -67,6 +67,6 @@ public class Tests {
 	@After
 	public void fin(){
 		 System.out.println(l);
-	}
+	}*/
 
 }

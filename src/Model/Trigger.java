@@ -2,45 +2,23 @@ package Model;
 
 import java.util.ArrayList;
 
-public abstract class Trigger {
+public abstract class Trigger extends ElementLab {
 
-	protected int posLigne;
-	protected int posColonne;
-	protected char type;
-	
-	//public abstract void effect();
-
-
-	public static void AddTrigger(ArrayList<Trigger> trigger) {
-		trigger.add(new Trap(14,5));
-		trigger.add(new Trap(9,7));
-
-	}
-	
-
-	
-	public void mettre_sur_plateau(Labyrinthe lab, int ligne, int colonne) {
-		lab.setTypeOfCase(ligne, colonne, this.type);
-		update();
-	}
-
-	public void update() {
+	public Trigger(int posLigne, int posColonne, Labyrinthe lab) {
+		super(posLigne, posColonne, lab);
 		
+		// TODO Auto-generated constructor stub
 	}
+
+
+	public abstract void effect();
+
+
+
+		
+
+
+
 	
-	public int getPosLigne() {
-		return posLigne;
-	}
-
-	public void setPosLigne(int posLigne) {
-		this.posLigne = posLigne;
-	}
-
-	public int getPosColonne() {
-		return posColonne;
-	}
-
-	public void setPosColonne(int posColonne) {
-		this.posColonne = posColonne;
-	}
+	
 }

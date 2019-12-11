@@ -13,7 +13,6 @@ import View.GraphicalInterface;
 public class Game {
 
 	private Labyrinthe laby;
-	private Heros heros;
 	private GraphicalInterface gui;
 	private Controller controller;
 	private GamePainter gamePainter;
@@ -28,47 +27,35 @@ public class Game {
 		if (gui) {
 			this.gamePainter = new AffichageGraphiqueLabyrinthe(this.laby);
 			this.gui = new GraphicalInterface(this.gamePainter, this.controller);
-			this.heros.addObserver(this.gui);
+			this.laby.getHeros().addObserver(this.gui);
 
 			this.gui.paint();
 		} else {
 			this.affichageConsole = new AffichageConsole(this.laby);
-			this.heros.addObserver(this.affichageConsole);
+			this.laby.getHeros().addObserver(this.affichageConsole);
 			this.affichageConsole.draw();
 		}
 	}
 
 	public Game() throws IOException {
-		this.heros = new Heros();
+
 		this.laby = new Labyrinthe();
-		this.controller = new Controller(heros);
+		this.controller = new Controller(laby.getHeros());
 		this.affichageConsole = new AffichageConsole(this.laby);
-		this.heros.mettre_sur_plateau(laby, this.heros.getPosLigne(), this.heros.getPosColonne());
-		this.heros.addObserver(this.affichageConsole);
+		this.laby.getHeros().addObserver(this.affichageConsole);
 		// this.heros.addObserver(o);
 	}
 
 	public void init(boolean gui) throws IOException {
-		this.heros = new Heros();
-		
-		this.monsters = new ArrayList<Monsters>();
-		Monsters.AddMonsters(monsters);
-		
-		this.triggers = new ArrayList<Trigger>();
-		Trigger.AddTrigger(triggers);
-		
-		this.laby = new Labyrinthe();
-		
-		this.controller = new Controller(heros);
 
-		this.heros.mettre_sur_plateau(laby, this.heros.getPosLigne(), this.heros.getPosColonne());
-		
-		for(Monsters m : monsters) {
-			m.mettre_sur_plateau(laby, m.getPosLigne(),m.getPosColonne());
-		}
-		for(Trigger t : triggers) {
-			t.mettre_sur_plateau(laby, t.getPosLigne(),t.getPosColonne());
-		}
+		this.monsters = new ArrayList<Monsters>();
+
+		this.triggers = new ArrayList<Trigger>();
+
+		this.laby = new Labyrinthe();
+
+		this.controller = new Controller(laby.getHeros());
+
 	}
 
 	public void play() throws InterruptedException {
@@ -85,13 +72,7 @@ public class Game {
 		laby = laby;
 	}
 
-	public Heros getHeros() {
-		return heros;
-	}
-
-	public void setHeros(Heros heros) {
-		this.heros = heros;
-	}
+	
 
 	public ArrayList<Monsters> getMonsters() {
 		return monsters;
