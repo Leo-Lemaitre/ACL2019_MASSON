@@ -19,6 +19,7 @@ public abstract class Character extends ElementLab {
 			update();
 		} else {
 			System.out.println("Deplacement impossible");
+			update();
 		}
 	}
 

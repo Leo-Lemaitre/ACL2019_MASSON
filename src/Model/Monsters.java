@@ -21,7 +21,13 @@ public class Monsters extends Character {
 	@Override
 	public boolean deplacementPossible(int[] direction) {
 		// TODO Auto-generated method stub
-		return true;
+		if (this.lab.getElementOnCase(this.getPosLigne() + direction[0], this.getPosColonne() + direction[1])
+				.getType() == Utilitaires.VIDE) {
+			return true;
+
+		} 
+		return false;
+	
 	}
 
 	

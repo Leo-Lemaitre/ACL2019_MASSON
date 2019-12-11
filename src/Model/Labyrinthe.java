@@ -15,6 +15,8 @@ public class Labyrinthe {
 	private int nbLignes;
 	private Heros heros;
 	private static ArrayList<ElementLab> listeElement;
+	
+	private static ArrayList<Monsters> listeMonsters;
 
 	public Labyrinthe() throws IOException {
 
@@ -27,6 +29,8 @@ public class Labyrinthe {
 		nbColonnes = Integer.parseInt(dimensions[1]);
 		this.grid = new ElementLab[nbLignes][nbColonnes];
 		this.listeElement = new ArrayList<ElementLab>();
+		this.listeMonsters = new ArrayList<Monsters>();
+		
 		int i = 0;
 		while ((lec = reader.readLine()) != null) {
 			for (int j = 0; j < lec.length(); j++) {
@@ -34,6 +38,7 @@ public class Labyrinthe {
 
 				case Utilitaires.MONSTERS:
 					listeElement.add(new Monsters(i, j, this));
+					listeMonsters.add(new Monsters(i, j, this)); // faire liste de hros et de piège...et concatener avec listelements
 					break;
 			
 				case Utilitaires.HEROS:
@@ -104,6 +109,10 @@ public class Labyrinthe {
 
 	public void setGrid(ElementLab[][] grid) {
 		this.grid = grid;
+	}
+
+	public static ArrayList<Monsters> getListeMonsters() {
+		return listeMonsters;
 	}
 
 	public ArrayList<ElementLab> getListeElement() {
