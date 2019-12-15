@@ -6,7 +6,7 @@ public class Trap extends Trigger {
 
 	public Trap(int posLigne, int posColonne) {
 		super(posLigne, posColonne);
-		this.type = Utilitaires.TRAP;
+		this.type = Constants.TRAP;
 
 	}
 

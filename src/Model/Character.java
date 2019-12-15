@@ -10,12 +10,12 @@ public abstract class Character extends ElementLab {
 	}
 	protected int lifePoint;
 
-	public void changerPosition(int[] direction) {
+	public void changePosition(int[] direction) {
 		if (deplacementPossible(direction)) {
-			Labyrinthe.getInstance().setElementOnCase(this.getPosLigne(), this.getPosColonne(), new Vide(this.getPosLigne(), this.getPosColonne()));
+			Labyrinth.getInstance().setElementOnSquare(this.getPosLigne(), this.getPosColonne(), new Empty(this.getPosLigne(), this.getPosColonne()));
 			this.setPosLigne(this.getPosLigne() + direction[0]);
 			this.setPosColonne(this.getPosColonne() + direction[1]);
-			Labyrinthe.getInstance().setElementOnCase(this.getPosLigne(), this.getPosColonne(), this);
+			Labyrinth.getInstance().setElementOnSquare(this.getPosLigne(), this.getPosColonne(), this);
 			update();
 		} else {
 			System.out.println("Deplacement impossible");

@@ -1,17 +1,5 @@
 package test;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.IOException;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import Model.Heros;
-import Model.Labyrinthe;
-import Model.Utilitaires;
-
 public class Tests {
 /*
 	static Heros heros=null;

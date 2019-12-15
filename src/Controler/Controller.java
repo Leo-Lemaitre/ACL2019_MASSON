@@ -3,16 +3,16 @@ package Controler;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import Model.Heros;
-import Model.Labyrinthe;
+import Model.Hero;
+import Model.Labyrinth;
 import Model.Monsters;
-import Model.Utilitaires;
+import Model.Constants;
 
 public class Controller implements KeyListener {
 
-	private Heros modelHeros;
+	private Hero modelHeros;
 
-	public Controller(Heros model) {
+	public Controller(Hero model) {
 		this.modelHeros = model;
 	}
 
@@ -23,62 +23,56 @@ public class Controller implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int keyCode = e.getKeyCode();
-		
+
 		switch (keyCode) {
-		
+
 		case KeyEvent.VK_UP:
-			modelHeros.changerPosition(Utilitaires.HAUT);
-			evoluer();
+			modelHeros.changePosition(Constants.UP);
+			evolve();
 			break;
 		case KeyEvent.VK_DOWN:
-			modelHeros.changerPosition(Utilitaires.BAS);
-			evoluer();
+			modelHeros.changePosition(Constants.DOWN);
+			evolve();
 			break;
 		case KeyEvent.VK_LEFT:
-			modelHeros.changerPosition(Utilitaires.GAUCHE);
-			evoluer();
+			modelHeros.changePosition(Constants.LEFT);
+			evolve();
 			break;
 		case KeyEvent.VK_RIGHT:
-			
-			modelHeros.changerPosition(Utilitaires.DROITE);
-			evoluer();
+
+			modelHeros.changePosition(Constants.RIGHT);
+			evolve();
 			break;
 		default:
 			System.out.println("Touche non reconnue");
 			break;
 		}
 
-	
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 	}
 
-	public void evoluer() {
-		
-		
-		for(Monsters m : Labyrinthe.getListeMonsters()) {
-			
-			m.changerPosition(Utilitaires.DIRECTIONS[(int) (Math.random()*4)]);
-			
+	public void evolve() {
+		for (Monsters m : Labyrinth.getListMonsters()) {
+			m.changePosition(Constants.DIRECTIONS[(int) (Math.random() * 4)]);
 		}
 	}
-	
-	
-	public void evoluer(String c) {
+
+	public void evolve(String c) {
 		if (c.equals("Haut")) {
-			this.modelHeros.changerPosition(Utilitaires.HAUT);
+			this.modelHeros.changePosition(Constants.UP);
 		}
 		if (c.equals("Bas")) {
-			this.modelHeros.changerPosition(Utilitaires.BAS);
+			this.modelHeros.changePosition(Constants.DOWN);
 		}
 		if (c.equals("Gauche")) {
-			this.modelHeros.changerPosition(Utilitaires.GAUCHE);
+			this.modelHeros.changePosition(Constants.LEFT);
 		}
 		if (c.equals("Droite")) {
-			this.modelHeros.changerPosition(Utilitaires.DROITE);
+			this.modelHeros.changePosition(Constants.RIGHT);
 		}
-	
+
 	}
 }

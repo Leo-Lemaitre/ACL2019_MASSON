@@ -1,8 +1,8 @@
 package Model;
 
-public class Tresor extends Trigger {
+public class Treasure extends Trigger {
 
-	public Tresor(int posLigne, int posColonne) {
+	public Treasure(int posLigne, int posColonne) {
 		super(posLigne, posColonne);
 
 
