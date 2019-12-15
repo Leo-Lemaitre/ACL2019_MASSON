@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Trap extends Trigger {
 
-	public Trap(int posLigne, int posColonne, Labyrinthe lab) {
-		super(posLigne, posColonne, lab);
+	public Trap(int posLigne, int posColonne) {
+		super(posLigne, posColonne);
 		this.type = Utilitaires.TRAP;
 
 	}

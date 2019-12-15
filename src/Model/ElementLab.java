@@ -7,12 +7,10 @@ public abstract class ElementLab extends Observable {
 	protected int posLigne;
 	protected int posColonne;
 	protected char type;
-	protected Labyrinthe lab;
 	
-	public ElementLab(int posLigne, int posColonne, Labyrinthe lab) {
+	public ElementLab(int posLigne, int posColonne) {
 		this.posLigne = posLigne;
 		this.posColonne = posColonne;
-		this.lab = lab;
 	}
 	
 	/*public ElementLab() {

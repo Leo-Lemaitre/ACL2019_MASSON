@@ -5,20 +5,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
-// METTRE SINGLETON
-
-
 public class Labyrinthe {
 	private ElementLab[][] grid;
 	private int nbColonnes;
 	private int nbLignes;
 	private Heros heros;
 	private static ArrayList<ElementLab> listeElement;
-	
+
 	private static ArrayList<Monsters> listeMonsters;
 
-	public Labyrinthe() throws IOException {
+	private Labyrinthe() throws IOException {
 
 		BufferedReader reader = new BufferedReader(new FileReader("Labyrinthe.txt"));
 		String lec;
@@ -30,32 +26,38 @@ public class Labyrinthe {
 		this.grid = new ElementLab[nbLignes][nbColonnes];
 		this.listeElement = new ArrayList<ElementLab>();
 		this.listeMonsters = new ArrayList<Monsters>();
-		
+
 		int i = 0;
 		while ((lec = reader.readLine()) != null) {
 			for (int j = 0; j < lec.length(); j++) {
 				switch (lec.charAt(j)) {
 
 				case Utilitaires.MONSTERS:
-					listeElement.add(new Monsters(i, j, this));
-					listeMonsters.add(new Monsters(i, j, this)); // faire liste de hros et de piège...et concatener avec listelements
+					listeElement.add(new Monsters(i, j));
+					listeMonsters.add(new Monsters(i, j)); // faire liste
+																	// de hros
+																	// et de
+																	// piège...et
+																	// concatener
+																	// avec
+																	// listelements
 					break;
-			
+
 				case Utilitaires.HEROS:
-					this.heros = new Heros(i, j, this);
+					this.heros = new Heros(i, j);
 					listeElement.add(this.heros);
 					break;
 
 				case Utilitaires.MUR:
-					listeElement.add(new Mur(i, j, this));
+					listeElement.add(new Mur(i, j));
 					break;
 
 				case Utilitaires.VIDE:
-					listeElement.add(new Vide(i, j,this));
+					listeElement.add(new Vide(i, j));
 					break;
 
 				case Utilitaires.TRAP:
-					listeElement.add(new Trap(i, j,this));
+					listeElement.add(new Trap(i, j));
 					break;
 				default:
 					break;
@@ -72,7 +74,21 @@ public class Labyrinthe {
 		}
 	}
 
-	public ElementLab getElementOnCase(int ligne, int colonne) { 
+	
+	private static Labyrinthe INSTANCE;
+	static {
+		try {
+			INSTANCE = new Labyrinthe();
+		} catch (Exception e) {
+
+		}
+	} 
+
+	public static Labyrinthe getInstance() {
+		return INSTANCE;
+	}
+
+	public ElementLab getElementOnCase(int ligne, int colonne) {
 		if (ligne >= 0 && ligne <= nbLignes && colonne >= 0 && colonne <= nbColonnes) {
 			return grid[ligne][colonne];
 		}
@@ -80,7 +96,7 @@ public class Labyrinthe {
 		return null;
 
 	}
-	
+
 	public Heros getHeros() {
 		return this.heros;
 	}

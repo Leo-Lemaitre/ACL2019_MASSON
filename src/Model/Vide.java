@@ -2,8 +2,8 @@ package Model;
 
 public class Vide extends ElementLab {
 
-	public Vide(int posLigne, int posColonne, Labyrinthe lab) {
-		super(posLigne,posColonne, lab);
+	public Vide(int posLigne, int posColonne) {
+		super(posLigne,posColonne);
 		this.type = Utilitaires.VIDE;
 		
 		

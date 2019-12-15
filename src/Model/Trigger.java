@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public abstract class Trigger extends ElementLab {
 
-	public Trigger(int posLigne, int posColonne, Labyrinthe lab) {
-		super(posLigne, posColonne, lab);
+	public Trigger(int posLigne, int posColonne) {
+		super(posLigne, posColonne);
 		
 		// TODO Auto-generated constructor stub
 	}

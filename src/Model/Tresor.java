@@ -2,8 +2,8 @@ package Model;
 
 public class Tresor extends Trigger {
 
-	public Tresor(int posLigne, int posColonne, Labyrinthe lab) {
-		super(posLigne, posColonne, lab);
+	public Tresor(int posLigne, int posColonne) {
+		super(posLigne, posColonne);
 
 
 		// TODO Auto-generated constructor stub

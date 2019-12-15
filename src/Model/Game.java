@@ -12,7 +12,6 @@ import View.GraphicalInterface;
 
 public class Game {
 
-	private Labyrinthe laby;
 	private GraphicalInterface gui;
 	private Controller controller;
 	private GamePainter gamePainter;
@@ -25,24 +24,24 @@ public class Game {
 	public Game(boolean gui) throws IOException {
 		this.init(gui);
 		if (gui) {
-			this.gamePainter = new AffichageGraphiqueLabyrinthe(this.laby);
+			this.gamePainter = new AffichageGraphiqueLabyrinthe(Labyrinthe.getInstance());
 			this.gui = new GraphicalInterface(this.gamePainter, this.controller);
-			this.laby.getHeros().addObserver(this.gui);
+			Labyrinthe.getInstance().getHeros().addObserver(this.gui);
 
 			this.gui.paint();
 		} else {
-			this.affichageConsole = new AffichageConsole(this.laby);
-			this.laby.getHeros().addObserver(this.affichageConsole);
+			this.affichageConsole = new AffichageConsole(Labyrinthe.getInstance());
+			Labyrinthe.getInstance().getHeros().addObserver(this.affichageConsole);
 			this.affichageConsole.draw();
 		}
 	}
 
 	public Game() throws IOException {
 
-		this.laby = new Labyrinthe();
-		this.controller = new Controller(laby.getHeros());
-		this.affichageConsole = new AffichageConsole(this.laby);
-		this.laby.getHeros().addObserver(this.affichageConsole);
+		// Labyrinthe.getInstance() = new Labyrinthe();
+		this.controller = new Controller(Labyrinthe.getInstance().getHeros());
+		this.affichageConsole = new AffichageConsole(Labyrinthe.getInstance());
+		Labyrinthe.getInstance().getHeros().addObserver(this.affichageConsole);
 		// this.heros.addObserver(o);
 	}
 
@@ -52,9 +51,9 @@ public class Game {
 
 		this.triggers = new ArrayList<Trigger>();
 
-		this.laby = new Labyrinthe();
+		// Labyrinthe.getInstance() = new Labyrinthe();
 
-		this.controller = new Controller(laby.getHeros());
+		this.controller = new Controller(Labyrinthe.getInstance().getHeros());
 
 	}
 
@@ -63,16 +62,6 @@ public class Game {
 		while (true)
 			this.controller.evoluer(sc.next());
 	}
-
-	public Labyrinthe getLaby() {
-		return laby;
-	}
-
-	public void setLaby(Labyrinthe laby) {
-		laby = laby;
-	}
-
-	
 
 	public ArrayList<Monsters> getMonsters() {
 		return monsters;

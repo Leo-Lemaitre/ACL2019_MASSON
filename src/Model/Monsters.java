@@ -9,8 +9,8 @@ public class Monsters extends Character {
 		this.type = Utilitaires.MONSTERS;
 	}*/
 	
-	public Monsters(int posLigne, int posColonne, Labyrinthe lab) {
-		super(posLigne, posColonne, lab);
+	public Monsters(int posLigne, int posColonne) {
+		super(posLigne, posColonne);
 		this.type = Utilitaires.MONSTERS;
 	
 	}
@@ -21,7 +21,7 @@ public class Monsters extends Character {
 	@Override
 	public boolean deplacementPossible(int[] direction) {
 		// TODO Auto-generated method stub
-		if (this.lab.getElementOnCase(this.getPosLigne() + direction[0], this.getPosColonne() + direction[1])
+		if (Labyrinthe.getInstance().getElementOnCase(this.getPosLigne() + direction[0], this.getPosColonne() + direction[1])
 				.getType() == Utilitaires.VIDE) {
 			return true;
 
