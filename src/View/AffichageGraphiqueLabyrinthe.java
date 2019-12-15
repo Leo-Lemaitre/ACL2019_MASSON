@@ -2,55 +2,51 @@ package View;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
-
-import Model.Labyrinthe;
-import Model.Utilitaires;
+import Model.Labyrinth;
+import Model.Constants;
 
 public class AffichageGraphiqueLabyrinthe implements GamePainter {
 
-	private Labyrinthe lab;
+	private Labyrinth lab;
 	//public ImageIcon Arbre1 = new ImageIcon("src/images/Arbre1.png");
 	//Image imArbre1 = Arbre1.getImage();
 
-	public AffichageGraphiqueLabyrinthe(Labyrinthe labyrinthe) {
+	public AffichageGraphiqueLabyrinthe(Labyrinth labyrinthe) {
 		this.lab = labyrinthe;
 	}
 
 	public void draw(BufferedImage image) {
 
 		Graphics2D g = (Graphics2D) image.getGraphics();
-		for (int ligne = 0; ligne < lab.getNbLignes(); ligne++) {
-			for (int colonne = 0; colonne < lab.getNbColonnes(); colonne++) {
-				System.out.println(lab.getElementOnCase(ligne, colonne));
-				switch (lab.getElementOnCase(ligne, colonne).getType()) {
-				case Utilitaires.VIDE:
+		for (int ligne = 0; ligne < lab.getNbLines(); ligne++) {
+			for (int colonne = 0; colonne < lab.getNbColumns(); colonne++) {
+				System.out.println(lab.getElementOnSquare(ligne, colonne));
+				switch (lab.getElementOnSquare(ligne, colonne).getType()) {
+				case Constants.EMPTY:
 					g.setColor(Color.WHITE);
 					break;
-				case Utilitaires.HEROS:
+				case Constants.HERO:
 					g.setColor(Color.YELLOW);
 					break;
-				case Utilitaires.MONSTERS:
+				case Constants.MONSTER:
 					g.setColor(Color.BLUE);
 					break;
-				case Utilitaires.MUR:
+				case Constants.WALL:
 					g.setColor(Color.BLACK);
-					// g.drawImage(imArbre1,colonne* Utilitaires.tailleCaseLaby-7,ligne *
-					// Utilitaires.tailleCaseLaby-30,null);
+					// g.drawImage(imArbre1,colonne* Constants.tailleCaseLaby-7,ligne *
+					// Constants.tailleCaseLaby-30,null);
 					break;
-				case Utilitaires.TRAP:
+				case Constants.TRAP:
 					g.setColor(Color.RED);
 					break;
 					
 				default:
 					System.out.println("Non reconnu");
 				}
-				g.fillRect(colonne * Utilitaires.tailleCaseLaby, ligne * Utilitaires.tailleCaseLaby,
-						Utilitaires.tailleCaseLaby, Utilitaires.tailleCaseLaby);
+				g.fillRect(colonne * Constants.SIZESQUARE, ligne * Constants.SIZESQUARE,
+						Constants.SIZESQUARE, Constants.SIZESQUARE);
 
 			}
 		}
@@ -60,11 +56,11 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 
 	@Override
 	public int getWidth() {
-		return Utilitaires.tailleCaseLaby * lab.getNbColonnes();
+		return Constants.SIZESQUARE * lab.getNbColumns();
 	}
 
 	@Override
 	public int getHeight() {
-		return Utilitaires.tailleCaseLaby * lab.getNbLignes();
+		return Constants.SIZESQUARE * lab.getNbLines();
 	}
 }

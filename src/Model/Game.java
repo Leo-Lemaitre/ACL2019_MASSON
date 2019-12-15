@@ -19,19 +19,19 @@ public class Game {
 
 	private ArrayList<Monsters> monsters;
 	private ArrayList<Trigger> triggers;
-	private Tresor T;
+	private Treasure T;
 
 	public Game(boolean gui) throws IOException {
 		this.init(gui);
 		if (gui) {
-			this.gamePainter = new AffichageGraphiqueLabyrinthe(Labyrinthe.getInstance());
+			this.gamePainter = new AffichageGraphiqueLabyrinthe(Labyrinth.getInstance());
 			this.gui = new GraphicalInterface(this.gamePainter, this.controller);
-			Labyrinthe.getInstance().getHeros().addObserver(this.gui);
+			Labyrinth.getInstance().getHeros().addObserver(this.gui);
 
 			this.gui.paint();
 		} else {
-			this.affichageConsole = new AffichageConsole(Labyrinthe.getInstance());
-			Labyrinthe.getInstance().getHeros().addObserver(this.affichageConsole);
+			this.affichageConsole = new AffichageConsole(Labyrinth.getInstance());
+			Labyrinth.getInstance().getHeros().addObserver(this.affichageConsole);
 			this.affichageConsole.draw();
 		}
 	}
@@ -39,9 +39,9 @@ public class Game {
 	public Game() throws IOException {
 
 		// Labyrinthe.getInstance() = new Labyrinthe();
-		this.controller = new Controller(Labyrinthe.getInstance().getHeros());
-		this.affichageConsole = new AffichageConsole(Labyrinthe.getInstance());
-		Labyrinthe.getInstance().getHeros().addObserver(this.affichageConsole);
+		this.controller = new Controller(Labyrinth.getInstance().getHeros());
+		this.affichageConsole = new AffichageConsole(Labyrinth.getInstance());
+		Labyrinth.getInstance().getHeros().addObserver(this.affichageConsole);
 		// this.heros.addObserver(o);
 	}
 
@@ -53,14 +53,14 @@ public class Game {
 
 		// Labyrinthe.getInstance() = new Labyrinthe();
 
-		this.controller = new Controller(Labyrinthe.getInstance().getHeros());
+		this.controller = new Controller(Labyrinth.getInstance().getHeros());
 
 	}
 
 	public void play() throws InterruptedException {
 		Scanner sc = new Scanner(System.in);
 		while (true)
-			this.controller.evoluer(sc.next());
+			this.controller.evolve(sc.next());
 	}
 
 	public ArrayList<Monsters> getMonsters() {
@@ -79,11 +79,11 @@ public class Game {
 		this.triggers = triggers;
 	}
 
-	public Tresor getT() {
+	public Treasure getT() {
 		return T;
 	}
 
-	public void setT(Tresor t) {
+	public void setT(Treasure t) {
 		T = t;
 	}
 

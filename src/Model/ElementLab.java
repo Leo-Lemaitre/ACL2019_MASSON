@@ -13,12 +13,6 @@ public abstract class ElementLab extends Observable {
 		this.posColonne = posColonne;
 	}
 	
-	/*public ElementLab() {
-		this.posLigne = 5;
-		this.posColonne = 5;
-	}
-	*/
-	
 	public int getPosLigne() {
 		return posLigne;
 	}
@@ -35,8 +29,6 @@ public abstract class ElementLab extends Observable {
 		this.posColonne = posColonne;
 	}
 	
-	
-
 	public char getType() {
 		return type;
 	}

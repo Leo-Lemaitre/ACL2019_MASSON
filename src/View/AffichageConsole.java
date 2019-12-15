@@ -1,21 +1,15 @@
 package View;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.JPanel;
-
-import Model.Labyrinthe;
-import Model.Utilitaires;
+import Model.Labyrinth;
 
 public class AffichageConsole implements Observer{
 
-	private Labyrinthe lab;
+	private Labyrinth lab;
 
-	public AffichageConsole(Labyrinthe labyrinthe) {
+	public AffichageConsole(Labyrinth labyrinthe) {
 		this.lab = labyrinthe;
 	}
 

@@ -11,7 +11,7 @@ public class Monsters extends Character {
 	
 	public Monsters(int posLigne, int posColonne) {
 		super(posLigne, posColonne);
-		this.type = Utilitaires.MONSTERS;
+		this.type = Constants.MONSTER;
 	
 	}
 	
@@ -21,8 +21,8 @@ public class Monsters extends Character {
 	@Override
 	public boolean deplacementPossible(int[] direction) {
 		// TODO Auto-generated method stub
-		if (Labyrinthe.getInstance().getElementOnCase(this.getPosLigne() + direction[0], this.getPosColonne() + direction[1])
-				.getType() == Utilitaires.VIDE) {
+		if (Labyrinth.getInstance().getElementOnSquare(this.getPosLigne() + direction[0], this.getPosColonne() + direction[1])
+				.getType() == Constants.EMPTY) {
 			return true;
 
 		} 

@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 import Model.Game;
-import Model.Labyrinthe;
+import Model.Labyrinth;
 
 public class Main {
 
