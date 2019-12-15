@@ -4,16 +4,19 @@ import java.util.ArrayList;
 
 public class Trap extends Trigger {
 
-	public Trap(int posColonne, int posLigne) {
-		this.posColonne = posColonne;
-		this.posLigne = posLigne;
+	public Trap(int posLigne, int posColonne) {
+		super(posLigne, posColonne);
 		this.type = Utilitaires.TRAP;
 
 	}
 
-	public static void effect() {
-		Labyrinthe.setTypeOfCase((int) (Math.random() * 20), (int) (Math.random() * 40), Utilitaires.MUR);
-	};
+	@Override
+	public void effect() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 
 	/*
 	 * if(Heros.getPosLigne() == this.posLigne && Heros.getPosColonne()==

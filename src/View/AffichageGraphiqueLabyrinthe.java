@@ -26,7 +26,8 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 		Graphics2D g = (Graphics2D) image.getGraphics();
 		for (int ligne = 0; ligne < lab.getNbLignes(); ligne++) {
 			for (int colonne = 0; colonne < lab.getNbColonnes(); colonne++) {
-				switch (lab.getTypeOfCase(ligne, colonne)) {
+				System.out.println(lab.getElementOnCase(ligne, colonne));
+				switch (lab.getElementOnCase(ligne, colonne).getType()) {
 				case Utilitaires.VIDE:
 					g.setColor(Color.WHITE);
 					break;
@@ -44,6 +45,9 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 				case Utilitaires.TRAP:
 					g.setColor(Color.RED);
 					break;
+					
+				default:
+					System.out.println("Non reconnu");
 				}
 				g.fillRect(colonne * Utilitaires.tailleCaseLaby, ligne * Utilitaires.tailleCaseLaby,
 						Utilitaires.tailleCaseLaby, Utilitaires.tailleCaseLaby);

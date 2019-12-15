@@ -12,8 +12,6 @@ import View.GraphicalInterface;
 
 public class Game {
 
-	private Labyrinthe laby;
-	private Heros heros;
 	private GraphicalInterface gui;
 	private Controller controller;
 	private GamePainter gamePainter;
@@ -26,71 +24,43 @@ public class Game {
 	public Game(boolean gui) throws IOException {
 		this.init(gui);
 		if (gui) {
-			this.gamePainter = new AffichageGraphiqueLabyrinthe(this.laby);
+			this.gamePainter = new AffichageGraphiqueLabyrinthe(Labyrinthe.getInstance());
 			this.gui = new GraphicalInterface(this.gamePainter, this.controller);
-			this.heros.addObserver(this.gui);
+			Labyrinthe.getInstance().getHeros().addObserver(this.gui);
 
 			this.gui.paint();
 		} else {
-			this.affichageConsole = new AffichageConsole(this.laby);
-			this.heros.addObserver(this.affichageConsole);
+			this.affichageConsole = new AffichageConsole(Labyrinthe.getInstance());
+			Labyrinthe.getInstance().getHeros().addObserver(this.affichageConsole);
 			this.affichageConsole.draw();
 		}
 	}
 
 	public Game() throws IOException {
-		this.heros = new Heros();
-		this.laby = new Labyrinthe();
-		this.controller = new Controller(heros);
-		this.affichageConsole = new AffichageConsole(this.laby);
-		this.heros.mettre_sur_plateau(laby, this.heros.getPosLigne(), this.heros.getPosColonne());
-		this.heros.addObserver(this.affichageConsole);
+
+		// Labyrinthe.getInstance() = new Labyrinthe();
+		this.controller = new Controller(Labyrinthe.getInstance().getHeros());
+		this.affichageConsole = new AffichageConsole(Labyrinthe.getInstance());
+		Labyrinthe.getInstance().getHeros().addObserver(this.affichageConsole);
 		// this.heros.addObserver(o);
 	}
 
 	public void init(boolean gui) throws IOException {
-		this.heros = new Heros();
-		
-		this.monsters = new ArrayList<Monsters>();
-		Monsters.AddMonsters(monsters);
-		
-		this.triggers = new ArrayList<Trigger>();
-		Trigger.AddTrigger(triggers);
-		
-		this.laby = new Labyrinthe();
-		
-		this.controller = new Controller(heros);
 
-		this.heros.mettre_sur_plateau(laby, this.heros.getPosLigne(), this.heros.getPosColonne());
-		
-		for(Monsters m : monsters) {
-			m.mettre_sur_plateau(laby, m.getPosLigne(),m.getPosColonne());
-		}
-		for(Trigger t : triggers) {
-			t.mettre_sur_plateau(laby, t.getPosLigne(),t.getPosColonne());
-		}
+		this.monsters = new ArrayList<Monsters>();
+
+		this.triggers = new ArrayList<Trigger>();
+
+		// Labyrinthe.getInstance() = new Labyrinthe();
+
+		this.controller = new Controller(Labyrinthe.getInstance().getHeros());
+
 	}
 
 	public void play() throws InterruptedException {
 		Scanner sc = new Scanner(System.in);
 		while (true)
 			this.controller.evoluer(sc.next());
-	}
-
-	public Labyrinthe getLaby() {
-		return laby;
-	}
-
-	public void setLaby(Labyrinthe laby) {
-		laby = laby;
-	}
-
-	public Heros getHeros() {
-		return heros;
-	}
-
-	public void setHeros(Heros heros) {
-		this.heros = heros;
 	}
 
 	public ArrayList<Monsters> getMonsters() {

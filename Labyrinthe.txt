@@ -2,18 +2,18 @@
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 X                                      X
 X                                      X
-X                                      X
-X                                      X
+X           Y                          X
+X     O                 P              X
 X                                      X
 X                                      X
 X                 XXXXX                X
 X                                      X
-X                                      X
-X                                      X
+X     P                                X
+X                          Y           X
 X                      XXX             X
 X                                      X
 X                                      X
-X                                      X
+X         Y                            X
 X                                      X
 X                                      X
 X                                      X

@@ -5,27 +5,32 @@ import java.util.ArrayList;
 public class Monsters extends Character {
 	
 	
+	/*public Monsters() {
+		this.type = Utilitaires.MONSTERS;
+	}*/
 	
-	public Monsters(int posColonne, int posLigne) {
-		this.posColonne = posColonne;
-		this.posLigne = posLigne;
+	public Monsters(int posLigne, int posColonne) {
+		super(posLigne, posColonne);
 		this.type = Utilitaires.MONSTERS;
 	
 	}
 	
-	public static void AddMonsters(ArrayList<Monsters> monsters) {
-		monsters.add(new Monsters(14,4));
-		monsters.add(new Monsters(6,8));
 
-	}
 	
 	
 	@Override
 	public boolean deplacementPossible(int[] direction) {
 		// TODO Auto-generated method stub
-		return true;
+		if (Labyrinthe.getInstance().getElementOnCase(this.getPosLigne() + direction[0], this.getPosColonne() + direction[1])
+				.getType() == Utilitaires.VIDE) {
+			return true;
+
+		} 
+		return false;
+	
 	}
 
+	
 	
 	
 }
