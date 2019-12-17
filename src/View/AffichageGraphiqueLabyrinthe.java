@@ -22,7 +22,6 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 		Graphics2D g = (Graphics2D) image.getGraphics();
 		for (int ligne = 0; ligne < lab.getNbLines(); ligne++) {
 			for (int colonne = 0; colonne < lab.getNbColumns(); colonne++) {
-				System.out.println(lab.getElementOnSquare(ligne, colonne));
 				switch (lab.getElementOnSquare(ligne, colonne).getType()) {
 				case Constants.EMPTY:
 					g.setColor(Color.WHITE);
@@ -50,7 +49,7 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 
 			}
 		}
-
+		System.out.println("Points de vie du heros : "+Labyrinth.getInstance().getHeros().getLifePoint());
 		g.dispose();
 	}
 

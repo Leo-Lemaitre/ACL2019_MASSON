@@ -65,11 +65,11 @@ public class Labyrinth {
 				switch (lec.charAt(j)) {
 
 				case Constants.MONSTER:
-					listMonsters.add(new Monsters(i, j));
+					listMonsters.add(new Monsters(i, j,5));
 					break;
 
 				case Constants.HERO:
-					this.hero = new Hero(i, j);
+					this.hero = new Hero(i, j,10);
 					listElement.add(this.hero);
 					break;
 

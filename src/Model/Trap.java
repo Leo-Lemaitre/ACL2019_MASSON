@@ -12,11 +12,9 @@ public class Trap extends Trigger {
 
 	@Override
 	public void effect() {
-		// TODO Auto-generated method stub
-		
+		Labyrinth.getInstance().getHeros().loseLifePoint(2);
+		System.out.println("Piege declenche");
 	}
-
-	
 
 	/*
 	 * if(Heros.getPosLigne() == this.posLigne && Heros.getPosColonne()==

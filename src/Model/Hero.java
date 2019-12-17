@@ -5,8 +5,8 @@ import java.util.Observer;
 
 public class Hero extends Character {
 
-	public Hero(int posLigne, int posColonne) {
-		super(posLigne, posColonne);
+	public Hero(int posLigne, int posColonne, int lifepoint) {
+		super(posLigne, posColonne,lifepoint);
 		this.type = Constants.HERO;
 	}
 

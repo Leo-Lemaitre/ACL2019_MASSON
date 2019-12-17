@@ -15,6 +15,7 @@ public class AffichageConsole implements Observer{
 
 	public void draw() {
 		System.out.println(lab);
+		System.out.println("Points de vie du heros : "+Labyrinth.getInstance().getHeros().getLifePoint());
 	}
 
 	@Override
