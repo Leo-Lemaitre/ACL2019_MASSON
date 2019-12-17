@@ -12,34 +12,40 @@ import java.util.ArrayList;
  */
 public class Labyrinth {
 	/**
-	 * 
+	 * attribut grille representant le labyrinthe avec pour chaque case un element
+	 * du labyrinthe associe
 	 */
 	private ElementLab[][] grid;
 	/*
-	 * 
+	 * attribut representant le nombre de colonnes du labyrinthe
 	 */
 	private int nbColumns;
 	/*
-	 * 
+	 * attribut representant le nombre de lignes du labyrinthe
 	 */
 	private int nbLines;
 	/*
-	 * 
+	 * attribut de type Hero qui represente l unique hero du jeu
 	 */
 	private Hero hero;
 	/*
-	 * 
+	 * attribut liste qui contient tous les elements declenchables presents dans le
+	 * labyrinthe
+	 */
+	private ArrayList<Trigger> listTriggers;
+	/*
+	 * attribut liste qui contient tous les elements presents dans le labyrinthe
 	 */
 	private static ArrayList<ElementLab> listElement;
 	/*
-	 * 
+	 * attribut liste qui contient tous les monstres presents dans le labyrinthe
 	 */
 	private static ArrayList<Monsters> listMonsters;
 
 	/**
-	 * Constructeur qui initialise le Labyrinthe
+	 * Constructeur qui initialise le Labyrinthe a partir du fichier Labyrinthe.txt
 	 * 
-	 * @throws IOException
+	 * @throws IOException si la lecture du fichier mene a une erreur
 	 */
 	private Labyrinth() throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader("Labyrinthe.txt"));
@@ -51,6 +57,7 @@ public class Labyrinth {
 		this.grid = new ElementLab[nbLines][nbColumns];
 		this.listElement = new ArrayList<ElementLab>();
 		this.listMonsters = new ArrayList<Monsters>();
+		this.listTriggers = new ArrayList<Trigger>();
 
 		int i = 0;
 		while ((lec = reader.readLine()) != null) {
@@ -58,14 +65,7 @@ public class Labyrinth {
 				switch (lec.charAt(j)) {
 
 				case Constants.MONSTER:
-					listElement.add(new Monsters(i, j));
-					listMonsters.add(new Monsters(i, j)); // faire liste
-															// de hros
-															// et de
-															// piège...et
-															// concatener
-															// avec
-															// listelements
+					listMonsters.add(new Monsters(i, j));
 					break;
 
 				case Constants.HERO:
@@ -82,7 +82,7 @@ public class Labyrinth {
 					break;
 
 				case Constants.TRAP:
-					listElement.add(new Trap(i, j));
+					listTriggers.add(new Trap(i,j));
 					break;
 				default:
 					break;
@@ -93,14 +93,16 @@ public class Labyrinth {
 
 		}
 
+		listElement.addAll(listMonsters);
+		listElement.addAll(listTriggers);
 		for (ElementLab e : this.listElement) {
 			this.grid[e.getPosLigne()][e.getPosColonne()] = e;
-
 		}
+
 	}
 
 	/**
-	 * Initialisatiob du Labyritnhe
+	 * Initialisation du Labyrinthe sous la forme de singleton
 	 */
 	private static Labyrinth INSTANCE;
 	static {
@@ -110,8 +112,10 @@ public class Labyrinth {
 
 		}
 	}
+
 	/**
-	 * Point d'acces universelle à l instance du labyrinthe
+	 * Point d'acces universelle a l instance du labyrinthe
+	 * 
 	 * @return l instance du labyrinthe
 	 */
 	public static Labyrinth getInstance() {
@@ -120,6 +124,7 @@ public class Labyrinth {
 
 	/**
 	 * Methode permettant de recuperer l'element sur une case donnee
+	 * 
 	 * @param ligne
 	 * @param colonne
 	 * @return l'element present sur la case
@@ -133,10 +138,9 @@ public class Labyrinth {
 
 	}
 
-	public Hero getHeros() {
-		return this.hero;
-	}
-
+	/**
+	 * Methode toString qui affiche le labyrinthe
+	 */
 	@Override
 	public String toString() {
 		String str = "";
@@ -150,9 +154,20 @@ public class Labyrinth {
 		return str;
 	}
 
+	/**
+	 * Remplace une case du labyrinthe par un element
+	 * 
+	 * @param line    numero de ligne ou l element sera mis
+	 * @param column  numero de colonne ou l element sera mis
+	 * @param element element a ajouter au labyrinthe
+	 */
 	public void setElementOnSquare(int line, int column, ElementLab element) {
 		grid[line][column] = element;
 
+	}
+
+	public Hero getHeros() {
+		return this.hero;
 	}
 
 	public ElementLab[][] getGrid() {
