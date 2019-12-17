@@ -20,11 +20,11 @@ public abstract class Character extends ElementLab {
 			this.setPosLigne(this.getPosLigne() + direction[0]);
 			this.setPosColonne(this.getPosColonne() + direction[1]);
 			Labyrinth.getInstance().setElementOnSquare(this.getPosLigne(), this.getPosColonne(), this);
-			update();
+			
 		} else {
-			System.out.println("Deplacement impossible");
-			update();
+			// System.out.println("Deplacement impossible");
 		}
+		update();
 	}
 
 	public abstract boolean deplacementPossible(int[] direction);

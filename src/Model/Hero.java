@@ -12,13 +12,15 @@ public class Hero extends Character {
 
 	@Override
 	public boolean deplacementPossible(int[] direction) {
-		if (Labyrinth.getInstance().getElementOnSquare(this.getPosLigne() + direction[0], this.getPosColonne() + direction[1])
-				.getType() == Constants.EMPTY) {
+		ElementLab element=Labyrinth.getInstance().getElementOnSquare(this.getPosLigne() + direction[0], this.getPosColonne() + direction[1]);
+		if(element==null) {
+			return false;
+		}
+		if (element.getType()== Constants.EMPTY) {
 			return true;
 
 		} else {
-			if (Labyrinth.getInstance().getElementOnSquare(this.getPosLigne() + direction[0], this.getPosColonne() + direction[1])
-					.getType() == Constants.TRAP) {
+			if (element.getType()== Constants.TRAP || element.getType()== Constants.HEALER) {
 				((Trigger)Labyrinth.getInstance().getElementOnSquare(this.getPosLigne() + direction[0], this.getPosColonne() + direction[1])).effect();
 				return true;
 			}

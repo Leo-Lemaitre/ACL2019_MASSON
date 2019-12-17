@@ -40,6 +40,9 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 				case Constants.TRAP:
 					g.setColor(Color.RED);
 					break;
+				case Constants.HEALER:
+					g.setColor(Color.GREEN);
+					break;
 					
 				default:
 					System.out.println("Non reconnu");

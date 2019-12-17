@@ -7,6 +7,7 @@ public final class Constants {
 	public static final char HERO = 'O';
 	public static final char MONSTER = 'Y';
 	public static final char TRAP = 'P';
+	public static final char HEALER = 'H';
 
 	// Ligne puis colonne
 	public final static int[] UP = new int[] { -1, 0 };
@@ -15,7 +16,9 @@ public final class Constants {
 	public final static int[] RIGHT = new int[] { 0, 1 };
 	public final static int[][] DIRECTIONS = new int[][] { UP, LEFT, DOWN, RIGHT };
 
-	public final static int SIZESQUARE = 40;
+	public final static int SIZESQUARE = 30;
+	public final static String FILELAB="Labyrinthe2.txt";
+
 	
 
 }

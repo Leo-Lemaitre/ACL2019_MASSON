@@ -10,12 +10,4 @@ public abstract class Trigger extends ElementLab {
 
 	public abstract void effect();
 
-
-
-		
-
-
-
-	
-	
 }

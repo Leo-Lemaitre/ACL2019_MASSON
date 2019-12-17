@@ -48,7 +48,7 @@ public class Labyrinth {
 	 * @throws IOException si la lecture du fichier mene a une erreur
 	 */
 	private Labyrinth() throws IOException {
-		BufferedReader reader = new BufferedReader(new FileReader("Labyrinthe.txt"));
+		BufferedReader reader = new BufferedReader(new FileReader(Constants.FILELAB));
 		String lec = reader.readLine();
 		String[] dimensions = lec.split(" ");
 
@@ -83,6 +83,10 @@ public class Labyrinth {
 
 				case Constants.TRAP:
 					listTriggers.add(new Trap(i,j));
+					break;
+					
+				case Constants.HEALER:
+					listTriggers.add(new Healer(i,j));
 					break;
 				default:
 					break;
@@ -133,7 +137,6 @@ public class Labyrinth {
 		if (ligne >= 0 && ligne <= nbLines && colonne >= 0 && colonne <= nbColumns) {
 			return grid[ligne][colonne];
 		}
-		System.out.println("En dehors des limites");
 		return null;
 
 	}
