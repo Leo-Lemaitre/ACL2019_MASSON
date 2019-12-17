@@ -61,15 +61,78 @@ public class Tests {
 	 */
 	@Test
 	public void testDeplacementLEFTMur() {
+		heros.setPosLigne(2);
+		heros.setPosColonne(1);
 		heros.changePosition(Constants.LEFT);
+		assertEquals(2,heros.getPosLigne());
+		assertEquals(0,heros.getPosColonne());
 	}
 	
+	@Test
+	public void testDeplacementRIGHTMur() {
+		heros.setPosLigne(2);
+		heros.setPosColonne(1);
+		heros.changePosition(Constants.RIGHT);
+		assertEquals(2,heros.getPosLigne());
+		assertEquals(2,heros.getPosColonne());
+	}
+	@Test
+	public void testDeplacementUPMur() {
+		heros.setPosLigne(2);
+		heros.setPosColonne(3);
+		heros.changePosition(Constants.UP);
+		assertEquals(1,heros.getPosLigne());
+		assertEquals(3,heros.getPosColonne());
+	}
+	@Test
+	public void testDeplacementDOWNMur() {
+		heros.setPosLigne(3);
+		heros.setPosColonne(2);
+		heros.changePosition(Constants.DOWN);
+		assertEquals(4,heros.getPosLigne());
+		assertEquals(2,heros.getPosColonne());
+	}
+
 	/**
 	 * A FAIRE DAns toutes les directions
 	 */
 	@Test
 	public void testDeplacementHorsLimitesLEFTMur() {
+		heros.setPosLigne(1);
+		heros.setPosColonne(1);
+		heros.changePosition(Constants.LEFT);
+		assertEquals(1,heros.getPosLigne());
+		assertEquals(1,heros.getPosColonne());
+		
+	}
 	
+	@Test
+	public void testDeplacementHorsLimitesRIGHTMur() {
+		heros.setPosLigne(1);
+		heros.setPosColonne(3);
+		heros.changePosition(Constants.RIGHT);
+		assertEquals(1,heros.getPosLigne());
+		assertEquals(3,heros.getPosColonne());
+		
+	}
+	
+	@Test
+	public void testDeplacementHorsLimitesUPMur() {
+		heros.setPosLigne(1);
+		heros.setPosColonne(3);
+		heros.changePosition(Constants.UP);
+		assertEquals(1,heros.getPosLigne());
+		assertEquals(3,heros.getPosColonne());
+		
+	}
+	
+	@Test
+	public void testDeplacementHorsLimitesDOWNMur() {
+		heros.setPosLigne(3);
+		heros.setPosColonne(1);
+		heros.changePosition(Constants.DOWN);
+		assertEquals(3,heros.getPosLigne());
+		assertEquals(1,heros.getPosColonne());
 		
 	}
 	
