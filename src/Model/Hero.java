@@ -3,13 +3,36 @@ package Model;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * Classe Hero qui herite de la classe Character qui 
+ * s occupe du deplacement du joueur 
+ */
+
 public class Hero extends Character {
 
+	/**
+	 * Constructeur qui initialise un heros a une position donnee posLigne posLigne 
+	 * et en lui donnant des points de vie en reutilisant le superconstructeur de 
+	 * la classe Character en precisant le type hero
+	 * @param posLigne 
+	 * @param posColonne
+	 * @param lifepoint
+	 */
+	
+	
 	public Hero(int posLigne, int posColonne, int lifepoint) {
 		super(posLigne, posColonne,lifepoint);
 		this.type = Constants.HERO;
 	}
 
+	
+	/**
+	 * Methode permettant de verifier si le deplacement est possible 
+	 * en s assurant que la case est vide ou piegee
+	 * 
+	 * @param direction
+	 * @return boolean 
+	 */
 	@Override
 	public boolean deplacementPossible(int[] direction) {
 		ElementLab element=Labyrinth.getInstance().getElementOnSquare(this.getPosLigne() + direction[0], this.getPosColonne() + direction[1]);
