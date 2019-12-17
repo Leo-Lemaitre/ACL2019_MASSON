@@ -11,29 +11,30 @@ import java.util.ArrayList;
  * presents sur le plateau
  */
 public class Labyrinth {
+	//
 	/**
 	 * attribut grille representant le labyrinthe avec pour chaque case un element
 	 * du labyrinthe associe
 	 */
 	private ElementLab[][] grid;
-	/*
+	/**
 	 * attribut representant le nombre de colonnes du labyrinthe
 	 */
 	private int nbColumns;
-	/*
+	/**
 	 * attribut representant le nombre de lignes du labyrinthe
 	 */
 	private int nbLines;
-	/*
+	/**
 	 * attribut de type Hero qui represente l unique hero du jeu
 	 */
 	private Hero hero;
-	/*
+	/**
 	 * attribut liste qui contient tous les elements declenchables presents dans le
 	 * labyrinthe
 	 */
 	private ArrayList<Trigger> listTriggers;
-	/*
+	/**
 	 * attribut liste qui contient tous les elements presents dans le labyrinthe
 	 */
 	private static ArrayList<ElementLab> listElement;
@@ -48,7 +49,7 @@ public class Labyrinth {
 	 * @throws IOException si la lecture du fichier mene a une erreur
 	 */
 	private Labyrinth() throws IOException {
-		BufferedReader reader = new BufferedReader(new FileReader(Constants.FILELAB));
+		BufferedReader reader = new BufferedReader(new FileReader(Constants.FILETEST));
 		String lec = reader.readLine();
 		String[] dimensions = lec.split(" ");
 
@@ -134,7 +135,7 @@ public class Labyrinth {
 	 * @return l'element present sur la case
 	 */
 	public ElementLab getElementOnSquare(int ligne, int colonne) {
-		if (ligne >= 0 && ligne <= nbLines && colonne >= 0 && colonne <= nbColumns) {
+		if (ligne >= 0 && ligne < nbLines && colonne >= 0 && colonne < nbColumns) {
 			return grid[ligne][colonne];
 		}
 		return null;

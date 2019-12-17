@@ -18,6 +18,7 @@ public final class Constants {
 
 	public final static int SIZESQUARE = 30;
 	public final static String FILELAB="Labyrinthe2.txt";
+	public final static String FILETEST="LabyrintheTest.txt";
 
 	
 

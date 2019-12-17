@@ -1,60 +1,82 @@
 package test;
 
+import static org.junit.Assert.assertEquals;
+
+import java.io.IOException;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import Model.Constants;
+import Model.Hero;
+import Model.Labyrinth;
+
 public class Tests {
-/*
-	static Heros heros=null;
-	static Labyrinthe l;
+
+	static Hero heros;
+	static Labyrinth l;
 	
 	@Before
 	public void init() throws IOException{
-		 heros =new Heros();
-		 l=new Labyrinthe();
+		l=Labyrinth.getInstance();
 		 System.out.println(l);
+		 heros=l.getHeros();
+		 heros.setPosColonne(2);
+		 heros.setPosLigne(2);
+		 System.out.println(heros.getPosLigne() +" "+heros.getPosColonne());
 	}
 	
 	
 	@Test
-	public void testDeplacementHautLibre() {
-		heros.changerPosition(Utilitaires.HAUT);
-		assertEquals(4,heros.getPosLigne());
-		assertEquals(5,heros.getPosColonne());
+	public void testDeplacementUpLibre() {
+		heros.changePosition(Constants.UP);
+		assertEquals(1,heros.getPosLigne());
+		assertEquals(2,heros.getPosColonne());
 	}
 	
 	@Test
 	public void testDeplacementBasLibre() {
-		heros.changerPosition(Utilitaires.BAS);
-		assertEquals(6,heros.getPosLigne());
-		assertEquals(5,heros.getPosColonne());
+		heros.changePosition(Constants.DOWN);
+		assertEquals(3,heros.getPosLigne());
+		assertEquals(2,heros.getPosColonne());
 	}
 	
 	@Test
-	public void testDeplacementGaucheLibre() {
-		heros.changerPosition(Utilitaires.GAUCHE);
-		assertEquals(5,heros.getPosLigne());
-		assertEquals(4,heros.getPosColonne());
+	public void testDeplacementLEFTLibre() {
+		heros.changePosition(Constants.LEFT);
+		assertEquals(2,heros.getPosLigne());
+		assertEquals(1,heros.getPosColonne());
 	}
 	
 	@Test
 	public void testDeplacementDroiteLibre() {
-		heros.changerPosition(Utilitaires.DROITE);
-		assertEquals(5,heros.getPosLigne());
-		assertEquals(6,heros.getPosColonne());
+		heros.changePosition(Constants.RIGHT);
+		assertEquals(2,heros.getPosLigne());
+		assertEquals(3,heros.getPosColonne());
 	}
 	
+	/* A FAIRE Placer heros près d'un mur et aller a gauche en faire un pour toutes les directions
+	 * 
+	 */
 	@Test
-	public void testDeplacementGaucheMur() {
-		heros.setPosLigne(1);
-		heros.setPosColonne(1);
-		heros.changerPosition(Utilitaires.GAUCHE);
-		assertEquals(1,heros.getPosLigne());
-		assertEquals(1,heros.getPosColonne());
+	public void testDeplacementLEFTMur() {
+		heros.changePosition(Constants.LEFT);
 	}
 	
+	/**
+	 * A FAIRE DAns toutes les directions
+	 */
+	@Test
+	public void testDeplacementHorsLimitesLEFTMur() {
+	
+		
+	}
 	
 	
 	@After
 	public void fin(){
 		 System.out.println(l);
-	}*/
+	}
 
 }
