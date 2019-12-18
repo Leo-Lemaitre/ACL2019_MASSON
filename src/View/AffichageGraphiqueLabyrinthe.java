@@ -44,6 +44,9 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 					g.setColor(Color.GREEN);
 					break;
 					
+				case Constants.TREASURE:
+					g.setColor(Color.PINK);
+					break;
 				default:
 					System.out.println("Non reconnu");
 				}

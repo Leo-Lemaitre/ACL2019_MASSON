@@ -13,20 +13,20 @@ XXXXXX XXXXX XX XXXXX XXXXXX
      X XX          XX X     
      X XX XXX  XXX XX X     
 XXXXXX XX X Y Y  X XX XXXXXX
-          X      X   P      
+ T        X      X   P      
 XXXXXX XX X Y Y  X XX XXXXXX
      X XX XXXXXXXX XX X     
      X XX          XX X     
      X XX XXXXXXXX XX X     
 XXXXXX XX XXXXXXXX XX XXXXXX
-X            XX      O     X
+X     Y      XX      O     X
 X XXXX XXXXX XX XXXXX XXXX X
 X XXXX XXXXX XX XXXXX XXXX X
-X   XX    H       P   XX   X
+X   XX    H  Y    P   XX   X
 XXX XX XX XXXXXXXX XX XX XXX
 XXX XX XX XXXXXXXX XX XX XXX
 X      XX    XX    XX      X
 X XXXXXXXXXX XX XXXXXXXXXX X
 X XXXXXXXXXX XX XXXXXXXXXX X
-X                 P        X
+X           Y     P        X
 XXXXXXXXXXXXXXXXXXXXXXXXXXXX

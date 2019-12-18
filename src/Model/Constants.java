@@ -8,6 +8,7 @@ public final class Constants {
 	public static final char MONSTER = 'Y';
 	public static final char TRAP = 'P';
 	public static final char HEALER = 'H';
+	public static final char TREASURE = 'T';
 
 	// Ligne puis colonne
 	public final static int[] UP = new int[] { -1, 0 };

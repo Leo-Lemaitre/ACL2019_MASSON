@@ -49,7 +49,7 @@ public class Labyrinth {
 	 * @throws IOException si la lecture du fichier mene a une erreur
 	 */
 	private Labyrinth() throws IOException {
-		BufferedReader reader = new BufferedReader(new FileReader(Constants.FILETEST));
+		BufferedReader reader = new BufferedReader(new FileReader(Constants.FILELAB));
 		String lec = reader.readLine();
 		String[] dimensions = lec.split(" ");
 
@@ -88,6 +88,10 @@ public class Labyrinth {
 					
 				case Constants.HEALER:
 					listTriggers.add(new Healer(i,j));
+					break;
+					
+				case Constants.TREASURE:
+					listTriggers.add(new Treasure(i,j));
 					break;
 				default:
 					break;

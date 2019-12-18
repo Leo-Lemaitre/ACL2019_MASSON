@@ -43,7 +43,7 @@ public class Hero extends Character {
 			return true;
 
 		} else {
-			if (element.getType()== Constants.TRAP || element.getType()== Constants.HEALER) {
+			if (element.getType()== Constants.TRAP || element.getType()== Constants.HEALER || element.getType()== Constants.TREASURE ) {
 				((Trigger)Labyrinth.getInstance().getElementOnSquare(this.getPosLigne() + direction[0], this.getPosColonne() + direction[1])).effect();
 				return true;
 			}
