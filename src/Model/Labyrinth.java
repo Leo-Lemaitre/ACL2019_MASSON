@@ -49,7 +49,7 @@ public class Labyrinth {
 	 * @throws IOException si la lecture du fichier mene a une erreur
 	 */
 	private Labyrinth() throws IOException {
-		BufferedReader reader = new BufferedReader(new FileReader(Constants.FILELAB));
+		BufferedReader reader = new BufferedReader(new FileReader(Constants.FILETEST));
 		String lec = reader.readLine();
 		String[] dimensions = lec.split(" ");
 

@@ -9,12 +9,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Model.Constants;
+import Model.Healer;
 import Model.Hero;
+import Model.Trap;
 import Model.Labyrinth;
 
 public class Tests {
 
 	static Hero heros;
+	static Trap trap;
+	static Healer heal;
 	static Labyrinth l;
 	
 	@Before
@@ -44,9 +48,11 @@ public class Tests {
 	
 	@Test
 	public void testDeplacementLEFTLibre() {
+		heros.setPosLigne(2);
+		heros.setPosColonne(2);
 		heros.changePosition(Constants.LEFT);
 		assertEquals(2,heros.getPosLigne());
-		assertEquals(1,heros.getPosColonne());
+		assertEquals(2,heros.getPosColonne());
 	}
 	
 	@Test
@@ -136,10 +142,30 @@ public class Tests {
 		
 	}
 	
+	@Test
+	public void testPerteViePiege() {
+		trap = new Trap(2,1);
+		heros.setLifePoint(5);
+		heros.changePosition(Constants.LEFT);
+		trap.effect();
+		assertEquals(3,heros.getLifePoint());
+	}
+	
+	@Test
+	public void testGainVieHealer() {
+		heal = new Healer(2,1);
+		heros.setLifePoint(5);
+		heros.changePosition(Constants.LEFT);
+		heal.effect();
+		assertEquals(7,heros.getLifePoint());
+	}
+	
+	
+	
 	
 	@After
 	public void fin(){
-		 System.out.println(l);
+		 //System.out.println(l);
 	}
 
 }
