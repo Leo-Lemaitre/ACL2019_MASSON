@@ -46,5 +46,8 @@ public class Monsters extends Character {
 		return false;
 
 	}
+	
+	
+	
 
 }

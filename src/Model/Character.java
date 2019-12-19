@@ -1,11 +1,12 @@
 package Model;
 
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.Observable;
 
 /**
  * Classe abstraite Character qui herite de la classe ElementLab qui contient
- * tous les etres vivants du labyrinthe 
+ * tous les etres vivants du labyrinthe
  */
 
 public abstract class Character extends ElementLab {
@@ -15,24 +16,25 @@ public abstract class Character extends ElementLab {
 	 * attribut protege lifePoint les points de vie du character
 	 */
 	protected int lifePoint;
-	
+
 	/**
-	 * Constructeur qui initialise un character a une position donnee posLigne posLigne 
-	 * et en lui donnant des points de vie
-	 * @param posLigne 
+	 * Constructeur qui initialise un character a une position donnee posLigne
+	 * posLigne et en lui donnant des points de vie
+	 * 
+	 * @param posLigne
 	 * @param posColonne
 	 * @param lifepoint
 	 */
-	
+
 	public Character(int posLigne, int posColonne, int lifepoint) {
 		super(posLigne, posColonne);
-		this.lifePoint=10;
+		this.lifePoint = 10;
 
 	}
 
 	/**
-	 * Methode permettant de changer la position du character dans une direction
-	 * si ce changement est possible
+	 * Methode permettant de changer la position du character dans une direction si
+	 * ce changement est possible
 	 * 
 	 * @param direction
 	 */
@@ -44,24 +46,22 @@ public abstract class Character extends ElementLab {
 			this.setPosLigne(this.getPosLigne() + direction[0]);
 			this.setPosColonne(this.getPosColonne() + direction[1]);
 			Labyrinth.getInstance().setElementOnSquare(this.getPosLigne(), this.getPosColonne(), this);
-			
+
 		} else {
 			// System.out.println("Deplacement impossible");
 		}
 		update();
 	}
-	
+
 	/**
 	 * Methode abstraite permettant de verifier si le deplacement est possible
 	 * 
 	 * @param direction
-	 * @return boolean 
+	 * @return boolean
 	 */
 
 	public abstract boolean deplacementPossible(int[] direction);
 
-	
-	
 	public int getLifePoint() {
 		return lifePoint;
 	}
@@ -79,6 +79,18 @@ public abstract class Character extends ElementLab {
 	public void loseLifePoint(int lifePoint) {
 		this.lifePoint -= lifePoint;
 		update();
+	}
+
+	public void attack() {
+
+		if (Labyrinth.getInstance()
+				.getElementOnSquare(this.posLigne + Constants.UP[0], this.posColonne + Constants.UP[1])
+				.getType() == Constants.MONSTER)
+
+			for (int i = 0; i < Labyrinth.getListMonsters().size(); i++) {
+				Labyrinth.getListMonsters().get(i).loseLifePoint(2);
+			}
+
 	}
 
 }

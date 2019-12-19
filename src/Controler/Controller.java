@@ -43,6 +43,10 @@ public class Controller implements KeyListener {
 			modelHeros.changePosition(Constants.RIGHT);
 			evolve();
 			break;
+		case KeyEvent.VK_SPACE:
+			modelHeros.attack();
+			evolve();
+			break;
 		default:
 			System.out.println("Touche non reconnue");
 			break;
@@ -57,7 +61,9 @@ public class Controller implements KeyListener {
 	public void evolve() {
 		for (Monsters m : Labyrinth.getListMonsters()) {
 			m.changePosition(Constants.DIRECTIONS[(int) (Math.random() * 4)]);
+			System.out.println("Life point " + m.getLifePoint());
 		}
+		
 	}
 
 	public void evolve(String c) {

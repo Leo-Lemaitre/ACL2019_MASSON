@@ -51,5 +51,7 @@ public class Hero extends Character {
 
 		return false;
 	}
+	
+	
 
 }
