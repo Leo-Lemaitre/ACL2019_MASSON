@@ -9,13 +9,13 @@ import java.util.Observable;
 
 public abstract class ElementLab extends Observable {
 
-	//
 	/**
 	 * attributs proteges de position et de type des elements 
 	 */
 	protected int posLigne;
 	protected int posColonne;
 	protected char type;
+	protected String fileImage;
 	
 	
 	/**
