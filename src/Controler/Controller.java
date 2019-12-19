@@ -64,7 +64,7 @@ public class Controller implements KeyListener {
 	public void evolve() {
 		if (!game.isEndGame()) {
 			for (Monsters m : Labyrinth.getListMonsters()) {
-				m.changePosition(Constants.DIRECTIONS[(int) (Math.random() * 4)]);
+				 m.changePosition(Constants.DIRECTIONS[(int) (Math.random() * 4)]);
 				System.out.println("Life point " + m.getLifePoint());
 
 			}

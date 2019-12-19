@@ -23,7 +23,7 @@ public class Hero extends Character {
 	public Hero(int posLigne, int posColonne, int lifepoint) {
 		super(posLigne, posColonne,lifepoint);
 		this.type = Constants.HERO;
-		this.imageName="Character.png";
+		this.imageName="Character";
 	}
 
 	
@@ -43,13 +43,12 @@ public class Hero extends Character {
 		if (element.getType()== Constants.EMPTY) {
 			return true;
 
-		} else {
-			if (element.getType()== Constants.TRAP || element.getType()== Constants.HEALER || element.getType()== Constants.TREASURE ) {
+		} 
+		if (element.getType()== Constants.TRAP || element.getType()== Constants.HEALER || element.getType()== Constants.TREASURE ) {
 				((Trigger)Labyrinth.getInstance().getElementOnSquare(this.getPosLigne() + direction[0], this.getPosColonne() + direction[1])).effect();
 				return true;
-			}
+			
 		}
-
 		return false;
 	}
 	

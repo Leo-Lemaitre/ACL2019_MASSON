@@ -16,6 +16,7 @@ public abstract class Character extends ElementLab {
 	 * attribut protege lifePoint les points de vie du character
 	 */
 	protected int lifePoint;
+	protected int[] direction;
 
 	/**
 	 * Constructeur qui initialise un character a une position donnee posLigne
@@ -29,6 +30,7 @@ public abstract class Character extends ElementLab {
 	public Character(int posLigne, int posColonne, int lifepoint) {
 		super(posLigne, posColonne);
 		this.lifePoint = 10;
+		this.direction=Constants.DOWN;
 
 	}
 
@@ -45,12 +47,21 @@ public abstract class Character extends ElementLab {
 					new Empty(this.getPosLigne(), this.getPosColonne()));
 			this.setPosLigne(this.getPosLigne() + direction[0]);
 			this.setPosColonne(this.getPosColonne() + direction[1]);
+			this.direction=direction;
 			Labyrinth.getInstance().setElementOnSquare(this.getPosLigne(), this.getPosColonne(), this);
-
+			
 		} else {
 			// System.out.println("Deplacement impossible");
 		}
 		update();
+	}
+
+	public int[] getDirection() {
+		return direction;
+	}
+
+	public void setDirection(int[] direction) {
+		this.direction = direction;
 	}
 
 	/**

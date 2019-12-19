@@ -9,26 +9,27 @@ import javax.swing.ImageIcon;
 
 import Model.Constants;
 import Model.ElementLab;
-import Model.Hero;
 import Model.Labyrinth;
+import Model.Character;
 
 //Enlever le labyrinthe car singleton
 public class AffichageGraphiqueLabyrinthe implements GamePainter {
 
-	private Labyrinth lab;
 	// public ImageIcon Arbre1 = new ImageIcon("src/images/Arbre1.png");
 	// Image imArbre1 = Arbre1.getImage();
 
-	public AffichageGraphiqueLabyrinthe(Labyrinth labyrinthe) {
-		this.lab = labyrinthe;
+	public AffichageGraphiqueLabyrinthe() {
+
 	}
 
-	public void dra2(BufferedImage image) {
+	public void draw2(BufferedImage image) {
 
 		Graphics2D g = (Graphics2D) image.getGraphics();
-		for (int ligne = 0; ligne < lab.getNbLines(); ligne++) {
-			for (int colonne = 0; colonne < lab.getNbColumns(); colonne++) {
-				switch (lab.getElementOnSquare(ligne, colonne).getType()) {
+		for (int ligne = 5; ligne < Labyrinth.getInstance().getNbLines(); ligne++) {
+			for (int colonne = 5; colonne < Labyrinth.getInstance().getNbColumns(); colonne++) {
+
+				System.out.println(Labyrinth.getInstance().getElementOnSquare(ligne, colonne));
+				switch (Labyrinth.getInstance().getElementOnSquare(ligne, colonne).getType()) {
 				case Constants.EMPTY:
 					g.setColor(Color.WHITE);
 					break;
@@ -89,17 +90,30 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 	}
 
 	public void drawElement(ElementLab e, Graphics2D g) {
-		g.drawImage(new ImageIcon("src/images/" + e.getImageName()).getImage(),
+		String direction = "";
+		if (e instanceof Character) {
+			int[] dir = ((Character) e).getDirection();
+			if (dir == Constants.UP) {
+				direction = "_Up";
+			} else if (dir == Constants.DOWN) {
+				direction = "_Down";
+			} else if (dir == Constants.LEFT) {
+				direction = "_Left";
+			} else {
+				direction = "_Right";
+			}
+		}
+		g.drawImage(new ImageIcon("src/images/" + e.getImageName() + direction + ".png").getImage(),
 				e.getPosColonne() * Constants.SIZESQUARE, e.getPosLigne() * Constants.SIZESQUARE, null);
 	}
 
 	@Override
 	public int getWidth() {
-		return Constants.SIZESQUARE * lab.getNbColumns();
+		return Constants.SIZESQUARE * Labyrinth.getInstance().getNbColumns();
 	}
 
 	@Override
 	public int getHeight() {
-		return Constants.SIZESQUARE * lab.getNbLines();
+		return Constants.SIZESQUARE * Labyrinth.getInstance().getNbLines();
 	}
 }
