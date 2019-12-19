@@ -61,9 +61,9 @@ public abstract class Character extends ElementLab {
 	 */
 
 	public abstract boolean deplacementPossible(int[] direction);
-	
+
 	public boolean isDead() {
-		return this.lifePoint<=0;
+		return this.lifePoint <= 0;
 	}
 
 	public int getLifePoint() {
@@ -82,11 +82,12 @@ public abstract class Character extends ElementLab {
 
 	public void loseLifePoint(int lifePoint) {
 		this.lifePoint -= lifePoint;
+		if (this.lifePoint < 0)
+			this.lifePoint = 0;
 		update();
 	}
 
 	public void attack() {
-
 		if (Labyrinth.getInstance()
 				.getElementOnSquare(this.posLigne + Constants.UP[0], this.posColonne + Constants.UP[1])
 				.getType() == Constants.MONSTER)
@@ -94,7 +95,7 @@ public abstract class Character extends ElementLab {
 			for (int i = 0; i < Labyrinth.getListMonsters().size(); i++) {
 				Labyrinth.getListMonsters().get(i).loseLifePoint(2);
 			}
-
+		update();
 	}
 
 }
