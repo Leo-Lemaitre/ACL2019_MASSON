@@ -30,6 +30,10 @@ public class Labyrinth {
 	 */
 	private Hero hero;
 	/**
+	 * attribut de type Treasure qui represente l unique tresor du jeu
+	 */
+	private Treasure treasure;
+	/**
 	 * attribut liste qui contient tous les elements declenchables presents dans le
 	 * labyrinthe
 	 */
@@ -38,7 +42,7 @@ public class Labyrinth {
 	 * attribut liste qui contient tous les elements presents dans le labyrinthe
 	 */
 	private static ArrayList<ElementLab> listElement;
-	/*
+	/**
 	 * attribut liste qui contient tous les monstres presents dans le labyrinthe
 	 */
 	private static ArrayList<Monsters> listMonsters;
@@ -49,7 +53,7 @@ public class Labyrinth {
 	 * @throws IOException si la lecture du fichier mene a une erreur
 	 */
 	private Labyrinth() throws IOException {
-		BufferedReader reader = new BufferedReader(new FileReader(Constants.FILETEST));
+		BufferedReader reader = new BufferedReader(new FileReader(Constants.FILELAB));
 		String lec = reader.readLine();
 		String[] dimensions = lec.split(" ");
 
@@ -66,11 +70,11 @@ public class Labyrinth {
 				switch (lec.charAt(j)) {
 
 				case Constants.MONSTER:
-					listMonsters.add(new Monsters(i, j,5));
+					listMonsters.add(new Monsters(i, j, 5));
 					break;
 
 				case Constants.HERO:
-					this.hero = new Hero(i, j,10);
+					this.hero = new Hero(i, j, 10);
 					listElement.add(this.hero);
 					break;
 
@@ -83,15 +87,16 @@ public class Labyrinth {
 					break;
 
 				case Constants.TRAP:
-					listTriggers.add(new Trap(i,j));
+					listTriggers.add(new Trap(i, j));
 					break;
-					
+
 				case Constants.HEALER:
-					listTriggers.add(new Healer(i,j));
+					listTriggers.add(new Healer(i, j));
 					break;
-					
+
 				case Constants.TREASURE:
-					listTriggers.add(new Treasure(i,j));
+					this.treasure = new Treasure(i, j);
+					listTriggers.add(this.treasure);
 					break;
 				default:
 					break;
@@ -108,6 +113,14 @@ public class Labyrinth {
 			this.grid[e.getPosLigne()][e.getPosColonne()] = e;
 		}
 
+	}
+
+	public Treasure getTreasure() {
+		return treasure;
+	}
+
+	public void setTreasure(Treasure treasure) {
+		this.treasure = treasure;
 	}
 
 	/**

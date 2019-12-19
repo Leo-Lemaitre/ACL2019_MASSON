@@ -16,10 +16,7 @@ public class Game {
 	private Controller controller;
 	private GamePainter gamePainter;
 	private AffichageConsole affichageConsole;
-
-	private ArrayList<Monsters> monsters;
-	private ArrayList<Trigger> triggers;
-	private Treasure T;
+	private boolean jeuFini;
 
 	public Game(boolean gui) throws IOException {
 		this.init(gui);
@@ -27,7 +24,6 @@ public class Game {
 			this.gamePainter = new AffichageGraphiqueLabyrinthe(Labyrinth.getInstance());
 			this.gui = new GraphicalInterface(this.gamePainter, this.controller);
 			Labyrinth.getInstance().getHeros().addObserver(this.gui);
-
 			this.gui.paint();
 		} else {
 			this.affichageConsole = new AffichageConsole(Labyrinth.getInstance());
@@ -36,55 +32,34 @@ public class Game {
 		}
 	}
 
-	public Game() throws IOException {
-
-		// Labyrinthe.getInstance() = new Labyrinthe();
-		this.controller = new Controller(Labyrinth.getInstance().getHeros());
-		this.affichageConsole = new AffichageConsole(Labyrinth.getInstance());
-		Labyrinth.getInstance().getHeros().addObserver(this.affichageConsole);
-		// this.heros.addObserver(o);
-	}
-
 	public void init(boolean gui) throws IOException {
-
-		this.monsters = new ArrayList<Monsters>();
-
-		this.triggers = new ArrayList<Trigger>();
-
-		// Labyrinthe.getInstance() = new Labyrinthe();
-
-		this.controller = new Controller(Labyrinth.getInstance().getHeros());
+		this.controller = new Controller(Labyrinth.getInstance().getHeros(), this);
+		this.jeuFini = false;
 
 	}
 
 	public void play() throws InterruptedException {
 		Scanner sc = new Scanner(System.in);
-		while (true)
+		while (!jeuFini)
 			this.controller.evolve(sc.next());
 	}
 
-	public ArrayList<Monsters> getMonsters() {
-		return monsters;
+	public boolean isEndGame() {
+		System.out.println("verification de la fin du jeu");
+		if (Labyrinth.getInstance().getHeros().isDead() || Labyrinth.getInstance().getTreasure().isTreasureOwned()) {
+			endGame();
+			return true;
+		}
+		return false;
+
 	}
 
-	public void setMonsters(ArrayList<Monsters> monsters) {
-		this.monsters = monsters;
-	}
-
-	public ArrayList<Trigger> getTriggers() {
-		return triggers;
-	}
-
-	public void setTriggers(ArrayList<Trigger> triggers) {
-		this.triggers = triggers;
-	}
-
-	public Treasure getT() {
-		return T;
-	}
-
-	public void setT(Treasure t) {
-		T = t;
+	public void endGame() {
+		System.out.println("Jeu fini");
+		jeuFini = true;
+		if (this.gui != null) {
+			this.gui.getPanel().removeKeyListener(this.controller);
+		}
 	}
 
 }
