@@ -50,6 +50,14 @@ public class GraphicalInterface implements Observer {
 		jframe.getContentPane().requestFocus();
 	}
 
+	public DrawingPanel getPanel() {
+		return panel;
+	}
+
+	public void setPanel(DrawingPanel panel) {
+		this.panel = panel;
+	}
+
 	/**
 	 * mise a jour du dessin
 	 */

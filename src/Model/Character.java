@@ -61,6 +61,10 @@ public abstract class Character extends ElementLab {
 	 */
 
 	public abstract boolean deplacementPossible(int[] direction);
+	
+	public boolean isDead() {
+		return this.lifePoint<=0;
+	}
 
 	public int getLifePoint() {
 		return lifePoint;

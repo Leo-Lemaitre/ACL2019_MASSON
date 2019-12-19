@@ -7,13 +7,16 @@ import Model.Hero;
 import Model.Labyrinth;
 import Model.Monsters;
 import Model.Constants;
+import Model.Game;
 
 public class Controller implements KeyListener {
 
 	private Hero modelHeros;
+	private Game game;
 
-	public Controller(Hero model) {
+	public Controller(Hero model, Game g) {
 		this.modelHeros = model;
+		this.game = g;
 	}
 
 	@Override
@@ -59,11 +62,15 @@ public class Controller implements KeyListener {
 	}
 
 	public void evolve() {
-		for (Monsters m : Labyrinth.getListMonsters()) {
-			m.changePosition(Constants.DIRECTIONS[(int) (Math.random() * 4)]);
-			System.out.println("Life point " + m.getLifePoint());
+		if (!game.isEndGame()) {
+			for (Monsters m : Labyrinth.getListMonsters()) {
+				m.changePosition(Constants.DIRECTIONS[(int) (Math.random() * 4)]);
+				System.out.println("Life point " + m.getLifePoint());
+
+			}
+
 		}
-		
+
 	}
 
 	public void evolve(String c) {
