@@ -88,13 +88,20 @@ public abstract class Character extends ElementLab {
 	}
 
 	public void attack() {
-		if (Labyrinth.getInstance()
-				.getElementOnSquare(this.posLigne + Constants.UP[0], this.posColonne + Constants.UP[1])
-				.getType() == Constants.MONSTER)
 
-			for (int i = 0; i < Labyrinth.getListMonsters().size(); i++) {
-				Labyrinth.getListMonsters().get(i).loseLifePoint(2);
+		for (int[] direction : Constants.DIRECTIONS) {
+			if (Labyrinth.getInstance().getElementOnSquare(this.posLigne + direction[0], this.posColonne + direction[1])
+					.getType() == Constants.MONSTER) {
+				Monsters m = ((Monsters) Labyrinth.getInstance().getElementOnSquare(this.posLigne + direction[0],
+						this.posColonne + direction[1]));
+				m.loseLifePoint(2);
+				if (m.isDead()) {
+					Labyrinth.getListMonsters().remove(m);
+					
+				}
 			}
+
+		}
 		update();
 	}
 
