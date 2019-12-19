@@ -15,9 +15,17 @@ public abstract class ElementLab extends Observable {
 	protected int posLigne;
 	protected int posColonne;
 	protected char type;
-	protected String fileImage;
+	protected String imageName;
 	
 	
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+
 	/**
 	 * Constructeur qui initialise un element a une position donnee posLigne posLigne 
 	 * @param posLigne 

@@ -24,6 +24,7 @@ public class Monsters extends Character {
 	public Monsters(int posLigne, int posColonne,int lifepoint) {
 		super(posLigne, posColonne,lifepoint);
 		this.type = Constants.MONSTER;
+		this.imageName="idle001.png";
 
 	}
 

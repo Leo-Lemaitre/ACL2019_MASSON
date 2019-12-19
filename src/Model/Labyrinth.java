@@ -46,6 +46,16 @@ public class Labyrinth {
 	 * attribut liste qui contient tous les monstres presents dans le labyrinthe
 	 */
 	private static ArrayList<Monsters> listMonsters;
+	
+	/**
+	 * attribut liste qui contient tous les monstres presents dans le labyrinthe
+	 */
+	private static ArrayList<Wall> listWalls;
+	/**
+	 * attribut liste qui contient tous les monstres presents dans le labyrinthe
+	 */
+	private static ArrayList<Empty> listEmpty;
+
 
 	/**
 	 * Constructeur qui initialise le Labyrinthe a partir du fichier Labyrinthe.txt
@@ -63,6 +73,8 @@ public class Labyrinth {
 		this.listElement = new ArrayList<ElementLab>();
 		this.listMonsters = new ArrayList<Monsters>();
 		this.listTriggers = new ArrayList<Trigger>();
+		this.listEmpty = new ArrayList<Empty>();
+		this.listWalls = new ArrayList<Wall>();
 
 		int i = 0;
 		while ((lec = reader.readLine()) != null) {
@@ -79,11 +91,13 @@ public class Labyrinth {
 					break;
 
 				case Constants.WALL:
-					listElement.add(new Wall(i, j));
+					Wall w=new Wall(i, j);
+					this.listWalls.add(w);
 					break;
 
 				case Constants.EMPTY:
-					listElement.add(new Empty(i, j));
+					Empty e=new Empty(i,j);
+					this.listEmpty.add(e);
 					break;
 
 				case Constants.TRAP:
@@ -113,6 +127,26 @@ public class Labyrinth {
 			this.grid[e.getPosLigne()][e.getPosColonne()] = e;
 		}
 
+	}
+
+	public static ArrayList<Wall> getListWalls() {
+		return listWalls;
+	}
+
+	public static void setListWalls(ArrayList<Wall> listWalls) {
+		Labyrinth.listWalls = listWalls;
+	}
+
+	public static ArrayList<Empty> getListEmpty() {
+		return listEmpty;
+	}
+
+	public static void setListEmpty(ArrayList<Empty> listEmpty) {
+		Labyrinth.listEmpty = listEmpty;
+	}
+
+	public static void setListMonsters(ArrayList<Monsters> listMonsters) {
+		Labyrinth.listMonsters = listMonsters;
 	}
 
 	public Treasure getTreasure() {
