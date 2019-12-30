@@ -21,7 +21,7 @@ public class Game {
 	public Game(boolean gui) throws IOException {
 		this.init(gui);
 		if (gui) {
-			this.gamePainter = new AffichageGraphiqueLabyrinthe(Labyrinth.getInstance());
+			this.gamePainter = new AffichageGraphiqueLabyrinthe();
 			this.gui = new GraphicalInterface(this.gamePainter, this.controller);
 			Labyrinth.getInstance().getHeros().addObserver(this.gui);
 			this.gui.paint();
@@ -33,6 +33,7 @@ public class Game {
 	}
 
 	public void init(boolean gui) throws IOException {
+		Labyrinth.getInstance();
 		this.controller = new Controller(Labyrinth.getInstance().getHeros(), this);
 		this.jeuFini = false;
 
@@ -45,7 +46,6 @@ public class Game {
 	}
 
 	public boolean isEndGame() {
-		System.out.println("verification de la fin du jeu");
 		if (Labyrinth.getInstance().getHeros().isDead() || Labyrinth.getInstance().getTreasure().isTreasureOwned()) {
 			endGame();
 			return true;

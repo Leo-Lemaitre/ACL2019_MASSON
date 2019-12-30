@@ -9,15 +9,23 @@ import java.util.Observable;
 
 public abstract class ElementLab extends Observable {
 
-	//
 	/**
 	 * attributs proteges de position et de type des elements 
 	 */
 	protected int posLigne;
 	protected int posColonne;
 	protected char type;
+	protected String imageName;
 	
 	
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+
 	/**
 	 * Constructeur qui initialise un element a une position donnee posLigne posLigne 
 	 * @param posLigne 

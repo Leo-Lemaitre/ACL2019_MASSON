@@ -17,7 +17,7 @@ public final class Constants {
 	public final static int[] RIGHT = new int[] { 0, 1 };
 	public final static int[][] DIRECTIONS = new int[][] { UP, LEFT, DOWN, RIGHT };
 
-	public final static int SIZESQUARE = 30;
+	public final static int SIZESQUARE = 40;
 	public final static String FILELAB="Labyrinthe2.txt";
 	public final static String FILETEST="LabyrintheTest.txt";
 
