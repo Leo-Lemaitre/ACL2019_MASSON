@@ -22,11 +22,11 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 
 	}
 
-	public void draw2(BufferedImage image) {
+	public void dra(BufferedImage image) {
 
 		Graphics2D g = (Graphics2D) image.getGraphics();
-		for (int ligne = 5; ligne < Labyrinth.getInstance().getNbLines(); ligne++) {
-			for (int colonne = 5; colonne < Labyrinth.getInstance().getNbColumns(); colonne++) {
+		for (int ligne = 0; ligne < Labyrinth.getInstance().getNbLines(); ligne++) {
+			for (int colonne = 0; colonne < Labyrinth.getInstance().getNbColumns(); colonne++) {
 
 				System.out.println(Labyrinth.getInstance().getElementOnSquare(ligne, colonne));
 				switch (Labyrinth.getInstance().getElementOnSquare(ligne, colonne).getType()) {
@@ -41,9 +41,6 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 					break;
 				case Constants.WALL:
 					g.setColor(Color.BLACK);
-					// g.drawImage(imArbre1,colonne*
-					// Constants.tailleCaseLaby-7,ligne *
-					// Constants.tailleCaseLaby-30,null);
 					break;
 				case Constants.TRAP:
 					g.setColor(Color.RED);
