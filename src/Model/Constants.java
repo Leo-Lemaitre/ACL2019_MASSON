@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.List;
+
 public final class Constants {
 
 	public static final char WALL = 'X';

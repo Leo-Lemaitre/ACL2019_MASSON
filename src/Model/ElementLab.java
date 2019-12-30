@@ -71,5 +71,8 @@ public abstract class ElementLab extends Observable {
 		return ""+ type +"";
 	}
 	
+	public double distanceWithElement(ElementLab e){
+		return Math.sqrt((e.getPosLigne() - this.posLigne) * (e.getPosLigne() - this.posLigne) + (e.getPosColonne() - this.posColonne) * ((e.getPosColonne() - this.posColonne)));
+	}
 	
 }

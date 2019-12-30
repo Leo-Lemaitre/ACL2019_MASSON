@@ -30,13 +30,13 @@ public abstract class Character extends ElementLab {
 	public Character(int posLigne, int posColonne, int lifepoint) {
 		super(posLigne, posColonne);
 		this.lifePoint = 10;
-		this.direction=Constants.DOWN;
+		this.direction = Constants.DOWN;
 
 	}
 
 	/**
-	 * Methode permettant de changer la position du character dans une direction si
-	 * ce changement est possible
+	 * Methode permettant de changer la position du character dans une direction
+	 * si ce changement est possible
 	 * 
 	 * @param direction
 	 */
@@ -47,13 +47,12 @@ public abstract class Character extends ElementLab {
 					new Empty(this.getPosLigne(), this.getPosColonne()));
 			this.setPosLigne(this.getPosLigne() + direction[0]);
 			this.setPosColonne(this.getPosColonne() + direction[1]);
-			this.direction=direction;
+			this.direction = direction;
 			Labyrinth.getInstance().setElementOnSquare(this.getPosLigne(), this.getPosColonne(), this);
-			
+
 		} else {
-			// System.out.println("Deplacement impossible");
+			System.out.println("Deplacement impossible");
 		}
-		update();
 	}
 
 	public int[] getDirection() {
@@ -107,13 +106,19 @@ public abstract class Character extends ElementLab {
 						this.posColonne + direction[1]));
 				m.loseLifePoint(2);
 				if (m.isDead()) {
-					Labyrinth.getListMonsters().remove(m);
-					
+					m.die();
+
 				}
 			}
 
 		}
 		update();
+	}
+
+	public void die() {
+		Labyrinth.getListMonsters().remove(this);
+		Labyrinth.getInstance().setElementOnSquare(this.posLigne, this.posColonne,
+				new Empty(this.posLigne, this.posColonne));
 	}
 
 }

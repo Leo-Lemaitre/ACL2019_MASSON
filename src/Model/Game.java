@@ -1,7 +1,6 @@
 package Model;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import Controler.Controller;
@@ -30,6 +29,7 @@ public class Game {
 			Labyrinth.getInstance().getHeros().addObserver(this.affichageConsole);
 			this.affichageConsole.draw();
 		}
+		
 	}
 
 	public void init(boolean gui) throws IOException {
