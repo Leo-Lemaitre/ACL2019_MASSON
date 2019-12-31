@@ -7,10 +7,11 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
+import Model.Character;
 import Model.Constants;
 import Model.ElementLab;
 import Model.Labyrinth;
-import Model.Character;
+import Model.Wall;
 
 //Enlever le labyrinthe car singleton
 public class AffichageGraphiqueLabyrinthe implements GamePainter {
@@ -88,6 +89,7 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 
 	public void drawElement(ElementLab e, Graphics2D g) {
 		String direction = "";
+		int decalage = 0;
 		if (e instanceof Character) {
 			int[] dir = ((Character) e).getDirection();
 			if (dir == Constants.UP) {
@@ -100,8 +102,12 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 				direction = "_Right";
 			}
 		}
+		
+		if (e instanceof Wall) {
+			decalage=15;
+		}
 		g.drawImage(new ImageIcon("src/images/" + e.getImageName() + direction + ".png").getImage(),
-				e.getPosColonne() * Constants.SIZESQUARE, e.getPosLigne() * Constants.SIZESQUARE, null);
+				e.getPosColonne() * Constants.SIZESQUARE +decalage, e.getPosLigne() * Constants.SIZESQUARE, null);
 	}
 
 	@Override
