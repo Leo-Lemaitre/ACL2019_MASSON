@@ -104,7 +104,7 @@ public abstract class Character extends ElementLab {
 					.getType() == Constants.MONSTER){
 				Monsters m = ((Monsters) Labyrinth.getInstance().getElementOnSquare(this.posLigne + direction[0],
 						this.posColonne + direction[1]));
-				m.loseLifePoint(2);
+				m.loseLifePoint(4);
 				if (m.isDead()) {
 					m.dieM();
 

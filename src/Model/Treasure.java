@@ -8,6 +8,7 @@ public class Treasure extends Trigger {
 		super(posLigne, posColonne);
 		this.type = Constants.TREASURE;
 		this.treasureOwned = false;
+		this.imageName="treasureSprite";
 	}
 
 	// @Override

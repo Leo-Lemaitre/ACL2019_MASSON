@@ -37,7 +37,12 @@ public class Labyrinth {
 	 * attribut liste qui contient tous les elements declenchables presents dans
 	 * le labyrinthe
 	 */
-	private ArrayList<Trigger> listTriggers;
+	private ArrayList<Trap> listTrap;
+
+	
+	private static ArrayList<Trigger> listTrigger;
+
+	private ArrayList<Healer> listHealer;
 	/**
 	 * attribut liste qui contient tous les elements presents dans le labyrinthe
 	 */
@@ -73,7 +78,9 @@ public class Labyrinth {
 		this.grid = new ElementLab[nbLines][nbColumns];
 		this.listElement = new ArrayList<ElementLab>();
 		this.listMonsters = new ArrayList<Monsters>();
-		this.listTriggers = new ArrayList<Trigger>();
+		this.listHealer = new ArrayList<Healer>();
+		this.listTrigger = new ArrayList<Trigger>();
+
 		this.listEmpty = new ArrayList<Empty>();
 		this.listWalls = new ArrayList<Wall>();
 
@@ -101,16 +108,16 @@ public class Labyrinth {
 					break;
 
 				case Constants.TRAP:
-					listTriggers.add(new Trap(i, j));
+					listTrigger.add(new Trap(i, j));
 					break;
 
 				case Constants.HEALER:
-					listTriggers.add(new Healer(i, j));
+					listTrigger.add(new Healer(i, j));
 					break;
 
 				case Constants.TREASURE:
 					this.treasure = new Treasure(i, j);
-					listTriggers.add(this.treasure);
+					listTrigger.add(this.treasure);
 					break;
 				default:
 					break;
@@ -122,9 +129,10 @@ public class Labyrinth {
 		}
 
 		listElement.addAll(listMonsters);
-		listElement.addAll(listTriggers);
+		listElement.addAll(listTrigger);
 		listElement.addAll(listWalls);
 		listElement.addAll(listEmpty);
+		//listElement.addAll(listTrap);
 		listElement.add(this.hero);
 		for (ElementLab e : this.listElement) {
 			this.grid[e.getPosLigne()][e.getPosColonne()] = e;
@@ -136,6 +144,11 @@ public class Labyrinth {
 		return listWalls;
 	}
 
+	
+	public static ArrayList<Trigger> getListTrigger(){
+		return listTrigger;
+	}
+	
 	public static void setListWalls(ArrayList<Wall> listWalls) {
 		Labyrinth.listWalls = listWalls;
 	}
@@ -230,6 +243,10 @@ public class Labyrinth {
 	public Hero getHeros() {
 		return this.hero;
 	}
+	
+	/*public ArrayList<Trap> getListTrap(){
+		return listTrap;
+	}*/
 
 	public ElementLab[][] getGrid() {
 		return grid;

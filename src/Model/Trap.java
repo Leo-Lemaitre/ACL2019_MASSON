@@ -7,6 +7,7 @@ public class Trap extends Trigger {
 	public Trap(int posLigne, int posColonne) {
 		super(posLigne, posColonne);
 		this.type = Constants.TRAP;
+		this.imageName="trap";
 
 	}
 
@@ -16,6 +17,7 @@ public class Trap extends Trigger {
 		System.out.println("Piege declenche");
 	}
 
+	
 	/*
 	 * if(Heros.getPosLigne() == this.posLigne && Heros.getPosColonne()==
 	 * this.posColonne ) {

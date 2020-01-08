@@ -11,6 +11,7 @@ import Model.Character;
 import Model.Constants;
 import Model.ElementLab;
 import Model.Labyrinth;
+import Model.Treasure;
 import Model.Wall;
 
 //Enlever le labyrinthe car singleton
@@ -74,10 +75,13 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 						i * Constants.SIZESQUARE, null);
 			}
 		}
-
+		//piege //healer //tresor
+		drawElement(Labyrinth.getInstance().getTreasure(),g);
+		drawListElement(Labyrinth.getInstance().getListTrigger(),g);
 		drawElement(Labyrinth.getInstance().getHeros(), g);
 		drawListElement(Labyrinth.getInstance().getListMonsters(), g);
 		drawListElement(Labyrinth.getInstance().getListWalls(), g);
+
 		System.out.println("Points de vie du heros : " + Labyrinth.getInstance().getHeros().getLifePoint());
 		g.dispose();
 	}
@@ -90,7 +94,9 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 
 	public void drawElement(ElementLab e, Graphics2D g) {
 		String direction = "";
-		int decalage = 0;
+		int decalagex = 0;
+		int decalagey = 0;
+
 		if (e instanceof Character) {
 			int[] dir = ((Character) e).getDirection();
 			if (dir == Constants.UP) {
@@ -105,10 +111,13 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 		}
 		
 		if (e instanceof Wall) {
-			decalage=15;
+			decalagex=15;
+		}
+		if (e instanceof Treasure) {
+			decalagey=15;
 		}
 		g.drawImage(new ImageIcon("src/images/" + e.getImageName() + direction + ".png").getImage(),
-				e.getPosColonne() * Constants.SIZESQUARE +decalage, e.getPosLigne() * Constants.SIZESQUARE, null);
+				e.getPosColonne() * Constants.SIZESQUARE +decalagex, e.getPosLigne() * Constants.SIZESQUARE+decalagey, null);
 	}
 
 	@Override
