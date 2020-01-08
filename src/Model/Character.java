@@ -49,10 +49,11 @@ public abstract class Character extends ElementLab {
 			this.setPosColonne(this.getPosColonne() + direction[1]);
 			this.direction = direction;
 			Labyrinth.getInstance().setElementOnSquare(this.getPosLigne(), this.getPosColonne(), this);
-
+			update();
 		} else {
 			System.out.println("Deplacement impossible");
 		}
+		
 	}
 
 	public int[] getDirection() {
@@ -85,12 +86,12 @@ public abstract class Character extends ElementLab {
 		update();
 	}
 
-	public void addLifePoint(int lifePoint) {
+	public void addLifePoint(int lifePoint){
 		this.lifePoint += lifePoint;
 		update();
 	}
 
-	public void loseLifePoint(int lifePoint) {
+	public void loseLifePoint(int lifePoint)  {
 		this.lifePoint -= lifePoint;
 		if (this.lifePoint < 0)
 			this.lifePoint = 0;
@@ -112,7 +113,7 @@ public abstract class Character extends ElementLab {
 			}
 
 		}
-		update();
+		
 	}
 	
 	public void attackH() {
@@ -126,7 +127,6 @@ public abstract class Character extends ElementLab {
 			}
 
 		}
-		update();
 	}
 
 	public void dieM() {
