@@ -38,14 +38,12 @@ public class DrawingPanel extends JPanel {
 	private int width, height;
 
 	/**
-	 * constructeur Il construit les images pour doublebuffering ainsi que le
-	 * Panel associe. Les images stockent le painter et on demande au panel la
-	 * mise a jour quand le painter est fini
+	 * constructeur Il construit les images pour doublebuffering ainsi que le Panel
+	 * associe. Les images stockent le painter et on demande au panel la mise a jour
+	 * quand le painter est fini
 	 * 
-	 * @param width
-	 *            largeur de l'image
-	 * @param height
-	 *            hauteur de l'image
+	 * @param width  largeur de l'image
+	 * @param height hauteur de l'image
 	 */
 	public DrawingPanel(GamePainter painter) {
 		super();
@@ -60,10 +58,11 @@ public class DrawingPanel extends JPanel {
 	}
 
 	/**
-	 * demande de mettre a jour le rendu de l'image sur le Panel. Creer une
-	 * nouvelle image vide sur laquelle dessiner
+	 * demande de mettre a jour le rendu de l'image sur le Panel. Creer une nouvelle
+	 * image vide sur laquelle dessiner
 	 */
 	public void drawGame() {
+		if (this.nextImage != null) {
 		// generer la nouvelle image
 		this.painter.draw(this.nextImage);
 		// inverses les images doublebuffereing
@@ -75,18 +74,19 @@ public class DrawingPanel extends JPanel {
 		this.nextImage.getGraphics().fillRect(0, 0, this.width, this.height);
 		// met a jour l'image a afficher sur le panel
 		this.repaint();
+		}
 	}
 
 	/**
 	 * redefinit la methode paint consiste a dessiner l'image en cours
 	 * 
-	 * @param g
-	 *            graphics pour dessiner
+	 * @param g graphics pour dessiner
 	 */
 	public void paint(Graphics g) {
-		super.paint(g);
-		g.drawImage(this.currentImage, 0, 0, getWidth(), getHeight(), 0, 0, getWidth(), getHeight(), null);
-
+		if (this.currentImage != null) {
+			super.paint(g);
+			g.drawImage(this.currentImage, 0, 0, getWidth(), getHeight(), 0, 0, getWidth(), getHeight(), null);
+		}
 	}
 
 }
