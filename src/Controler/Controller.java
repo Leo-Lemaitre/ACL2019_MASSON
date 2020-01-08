@@ -69,6 +69,7 @@ public class Controller implements KeyListener {
 					m.attackH();
 				}
 				else {
+					if(Math.random()>0.5)
 					m.changePosition(m.getDirectionCloserToTheHero());
 
 				}

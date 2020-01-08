@@ -29,7 +29,7 @@ public class Game {
 			Labyrinth.getInstance().getHeros().addObserver(this.affichageConsole);
 			this.affichageConsole.draw();
 		}
-		
+
 	}
 
 	public void init(boolean gui) throws IOException {
@@ -41,8 +41,10 @@ public class Game {
 
 	public void play() throws InterruptedException {
 		Scanner sc = new Scanner(System.in);
-		while (!jeuFini)
-			this.controller.evolve(sc.next());
+		while (!jeuFini) {
+			this.controller.evolve();
+			Thread.sleep((int) (Math.random() * 700));
+		}
 	}
 
 	public boolean isEndGame() {
