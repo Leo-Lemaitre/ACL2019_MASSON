@@ -78,7 +78,8 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 		drawElement(Labyrinth.getInstance().getHeros(), g);
 		drawListElement(Labyrinth.getInstance().getListMonsters(), g);
 		drawListElement(Labyrinth.getInstance().getListWalls(), g);
-
+		System.out.println("Points de vie du heros : " + Labyrinth.getInstance().getHeros().getLifePoint());
+		g.dispose();
 	}
 
 	public void drawListElement(ArrayList<? extends ElementLab> list, Graphics2D g) {

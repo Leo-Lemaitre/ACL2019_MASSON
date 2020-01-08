@@ -78,4 +78,6 @@ public class Monsters extends Character {
 
 		return direction;
 	}
+	
+	
 }

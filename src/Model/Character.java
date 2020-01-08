@@ -97,16 +97,16 @@ public abstract class Character extends ElementLab {
 		update();
 	}
 
-	public void attack() {
+	public void attackM() {
 
 		for (int[] direction : Constants.DIRECTIONS) {
 			if (Labyrinth.getInstance().getElementOnSquare(this.posLigne + direction[0], this.posColonne + direction[1])
-					.getType() == Constants.MONSTER) {
+					.getType() == Constants.MONSTER){
 				Monsters m = ((Monsters) Labyrinth.getInstance().getElementOnSquare(this.posLigne + direction[0],
 						this.posColonne + direction[1]));
 				m.loseLifePoint(2);
 				if (m.isDead()) {
-					m.die();
+					m.dieM();
 
 				}
 			}
@@ -114,11 +114,26 @@ public abstract class Character extends ElementLab {
 		}
 		update();
 	}
+	
+	public void attackH() {
 
-	public void die() {
+		for (int[] direction : Constants.DIRECTIONS) {
+			if (Labyrinth.getInstance().getElementOnSquare(this.posLigne + direction[0], this.posColonne + direction[1])
+					.getType() == Constants.HERO){
+				
+				Labyrinth.getInstance().getHeros().loseLifePoint(1);
+				
+			}
+
+		}
+		update();
+	}
+
+	public void dieM() {
 		Labyrinth.getListMonsters().remove(this);
 		Labyrinth.getInstance().setElementOnSquare(this.posLigne, this.posColonne,
 				new Empty(this.posLigne, this.posColonne));
 	}
+	
 
 }

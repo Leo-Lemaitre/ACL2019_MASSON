@@ -13,9 +13,9 @@ XXXXXX XXXXX XX XXXXX XXXXXX
      X XX          XX X     
      X XX XXX  XXX XX X     
 XXXXXX XX X Y Y  X XX XXXXXX
- T        X      X   P      
+ T                   P      
 XXXXXX XX X Y Y  X XX XXXXXX
-     X XX XXXXXXXX XX X     
+     X XX XXX XXXX XX X     
      X XX          XX X     
      X XX XXXXXXXX XX X     
 XXXXXX XX XXXXXXXX XX XXXXXX

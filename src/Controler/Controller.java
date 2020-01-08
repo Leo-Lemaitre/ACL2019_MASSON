@@ -47,7 +47,7 @@ public class Controller implements KeyListener {
 			evolve();
 			break;
 		case KeyEvent.VK_SPACE:
-			modelHeros.attack();
+			modelHeros.attackM();
 			evolve();
 			break;
 		default:
@@ -65,7 +65,13 @@ public class Controller implements KeyListener {
 		if (!game.isEndGame()) {
 			for (Monsters m : Labyrinth.getListMonsters()) {
 				// m.changePosition(Constants.DIRECTIONS[(int) (Math.random() * 4)]);
-				m.changePosition(m.getDirectionCloserToTheHero());
+				if(m.distanceWithElement(Labyrinth.getInstance().getHeros())==1){
+					m.attackH();
+				}
+				else {
+					m.changePosition(m.getDirectionCloserToTheHero());
+
+				}
 				System.out.println("Life point " + m.getLifePoint());
 
 			}
