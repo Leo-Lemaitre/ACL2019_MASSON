@@ -67,7 +67,7 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 	}
 
 	public void draw(BufferedImage image) {
-		if (image !=null) {
+		
 		Graphics2D g = (Graphics2D) image.getGraphics();
 
 		for (int j = 0; j <= Labyrinth.getInstance().getNbColumns(); j++) {
@@ -85,7 +85,7 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 
 		System.out.println("Points de vie du heros : " + Labyrinth.getInstance().getHeros().getLifePoint());
 		g.dispose();
-		}
+		
 	}
 
 	public void drawListElement(ArrayList<? extends ElementLab> list, Graphics2D g) {

@@ -1,13 +1,12 @@
 import java.io.IOException;
-import java.util.Vector;
 
-import Model.Game;
-import Model.Labyrinth;
+import View.Difficulty;
 
 public class Main {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
-		Game g = new Game(true);
-		g.play();
+		Difficulty window = new Difficulty();
+		window.frame.setVisible(true);
+	
 	}
 }

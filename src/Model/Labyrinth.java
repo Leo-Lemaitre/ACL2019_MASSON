@@ -94,7 +94,7 @@ public class Labyrinth {
 					break;
 
 				case Constants.HERO:
-					this.hero = new Hero(i, j, 10);
+					this.hero = new Hero(i, j, 50);
 					break;
 
 				case Constants.WALL:

@@ -61,7 +61,8 @@ public abstract class ElementLab extends Observable {
 		this.type = type;
 	}
 
-	public void update() {
+	public void update()  {
+	
 		setChanged();
 		notifyObservers();
 	}

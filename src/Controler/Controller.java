@@ -2,6 +2,8 @@ package Controler;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Random;
+import java.util.TimerTask;
 
 import Model.Constants;
 import Model.Game;
@@ -9,7 +11,7 @@ import Model.Hero;
 import Model.Labyrinth;
 import Model.Monsters;
 
-public class Controller implements KeyListener {
+public class Controller  implements KeyListener {
 
 	private Hero modelHeros;
 	private Game game;
@@ -43,7 +45,7 @@ public class Controller implements KeyListener {
 			break;
 		case KeyEvent.VK_SPACE:
 			modelHeros.attackM();
-			
+
 			break;
 		default:
 			System.out.println("Touche non reconnue");
@@ -56,27 +58,27 @@ public class Controller implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 	}
 
-	public void evolve()  {
+	public void evolve() {
 		if (!game.isEndGame()) {
 			for (Monsters m : Labyrinth.getListMonsters()) {
-		
 
-				// m.changePosition(Constants.DIRECTIONS[(int) (Math.random() * 4)]);
-				if(m.distanceWithElement(Labyrinth.getInstance().getHeros())==1){
+				// m.changePosition(Constants.DIRECTIONS[(int) (Math.random() *
+				// 4)]);
+				if (m.distanceWithElement(Labyrinth.getInstance().getHeros()) == 1) {
 					m.attackH();
 				}
+
 				else {
-					if(Math.random()>0.5) {
-					m.changePosition(m.getDirectionCloserToTheHero());
-			
+					if (Math.random() > 0.3) {
+						m.changePosition(m.getDirectionCloserToTheHero());
+
 					}
 				}
 				System.out.println("Life point " + m.getLifePoint());
 
 			}
-			
+
 		}
-	
 
 	}
 
@@ -95,4 +97,5 @@ public class Controller implements KeyListener {
 		}
 
 	}
+
 }

@@ -29,7 +29,7 @@ public abstract class Character extends ElementLab {
 
 	public Character(int posLigne, int posColonne, int lifepoint) {
 		super(posLigne, posColonne);
-		this.lifePoint = 10;
+		this.lifePoint = lifepoint;
 		this.direction = Constants.DOWN;
 
 	}
@@ -49,7 +49,7 @@ public abstract class Character extends ElementLab {
 			this.setPosColonne(this.getPosColonne() + direction[1]);
 			this.direction = direction;
 			Labyrinth.getInstance().setElementOnSquare(this.getPosLigne(), this.getPosColonne(), this);
-			update();
+			//update();
 		} else {
 			System.out.println("Deplacement impossible");
 		}
@@ -83,19 +83,19 @@ public abstract class Character extends ElementLab {
 
 	public void setLifePoint(int lifePoint) {
 		this.lifePoint = lifePoint;
-		update();
+	//	update();
 	}
 
 	public void addLifePoint(int lifePoint){
 		this.lifePoint += lifePoint;
-		update();
+		//update();
 	}
 
 	public void loseLifePoint(int lifePoint)  {
 		this.lifePoint -= lifePoint;
 		if (this.lifePoint < 0)
 			this.lifePoint = 0;
-		update();
+		//update();
 	}
 
 	public void attackM() {
