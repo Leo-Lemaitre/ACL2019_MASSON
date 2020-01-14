@@ -9,10 +9,21 @@ import javax.swing.JFrame;
 
 import Model.Game;
 
+/**
+ * Classe Difficulty permettant au joueur de 
+ * choisir la difficulte du jeu 
+ */
+
 public class Difficulty {
 
+	/**
+	 * attribut public frame correspond a 
+	 * une nouvelle fenetre 
+	 */
+	
 	public JFrame frame;
 
+	
 	public JFrame getFrame() {
 		return frame;
 	}
@@ -30,6 +41,7 @@ public class Difficulty {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * avec les differents niveaux de difficulte e i ou h
 	 */
 	private void initialize() {
 		frame = new JFrame("Choix Difficulte");
