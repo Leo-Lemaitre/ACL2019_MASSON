@@ -10,7 +10,9 @@ import javax.swing.ImageIcon;
 import Model.Character;
 import Model.Constants;
 import Model.ElementLab;
+import Model.Healer;
 import Model.Labyrinth;
+import Model.Monsters;
 import Model.Trap;
 import Model.Treasure;
 import Model.Wall;
@@ -114,13 +116,25 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 		}
 		
 		if (e instanceof Wall) {
-			decalagex=15;
+			decalagex=17;
+			decalagey=10;
 		}
+		if(e instanceof Healer) {
+			decalagex=0;
+			decalagey=10;
+		}
+			
+			
 		if (e instanceof Treasure) {
 			decalagey=15;
 		}
 		if (e instanceof Trap) {
-			decalagey=0;
+			decalagex=10;
+			decalagey=10;
+		}
+		if (e instanceof Monsters) {
+			decalagex=-5;
+			decalagey=-10;
 		}
 		g.drawImage(new ImageIcon("src/images/" + e.getImageName() + direction + ".png").getImage(),
 				e.getPosColonne() * Constants.SIZESQUARE +decalagex, e.getPosLigne() * Constants.SIZESQUARE+decalagey, null);
