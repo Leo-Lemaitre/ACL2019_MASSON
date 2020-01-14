@@ -7,7 +7,7 @@ public class Trap extends Trigger {
 	public Trap(int posLigne, int posColonne) {
 		super(posLigne, posColonne);
 		this.type = Constants.TRAP;
-		this.imageName="trap";
+		this.imageName="trap_ok";
 
 	}
 

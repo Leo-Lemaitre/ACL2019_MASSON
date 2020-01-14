@@ -5,6 +5,7 @@ public class Healer extends Trigger {
 	public Healer(int posLigne, int posColonne) {
 		super(posLigne, posColonne);
 		this.type = Constants.HEALER;
+		this.imageName="heart_ok";
 
 	}
 

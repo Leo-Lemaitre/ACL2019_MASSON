@@ -11,6 +11,7 @@ import Model.Character;
 import Model.Constants;
 import Model.ElementLab;
 import Model.Labyrinth;
+import Model.Trap;
 import Model.Treasure;
 import Model.Wall;
 
@@ -117,6 +118,9 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 		}
 		if (e instanceof Treasure) {
 			decalagey=15;
+		}
+		if (e instanceof Trap) {
+			decalagey=0;
 		}
 		g.drawImage(new ImageIcon("src/images/" + e.getImageName() + direction + ".png").getImage(),
 				e.getPosColonne() * Constants.SIZESQUARE +decalagex, e.getPosLigne() * Constants.SIZESQUARE+decalagey, null);
