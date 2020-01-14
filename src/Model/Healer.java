@@ -18,5 +18,6 @@ public class Healer extends Trigger {
 	public void effect() {
 		Labyrinth.getInstance().getHeros().addLifePoint(2);
 		System.out.println("Healer declenche");
+		Labyrinth.getInstance().getListTrigger().remove(this);
 	}
 }

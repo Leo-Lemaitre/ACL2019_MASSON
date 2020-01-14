@@ -31,6 +31,7 @@ public class Trap extends Trigger {
 	public void effect() {
 		Labyrinth.getInstance().getHeros().loseLifePoint(2);
 		System.out.println("Piege declenche");
+		Labyrinth.getInstance().getListTrigger().remove(this);
 	}
 
 }
