@@ -35,6 +35,8 @@ Manuel d'utilisation et d'installation :
 
 
 
+Présentation du projet : https://docs.google.com/presentation/d/1P5NNx7-5DcEDx2SFAVUIO_9sGBMOeetBEggqCEwTo74/edit#slide=id.g6bab99eedb_0_60
+
 
 /// A l'attention des membres de l'équipe  ////
 
