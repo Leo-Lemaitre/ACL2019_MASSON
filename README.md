@@ -18,6 +18,7 @@ Manuel d'utilisation et d'installation :
    Pour installer le jeu, télécharger le fichier jar 
    
    Pour jouer : 
+     
      1) ouvrir le fichier jar
      
      2) choisir un niveau de difficulté dans la fenêtre qui s'ouvre
