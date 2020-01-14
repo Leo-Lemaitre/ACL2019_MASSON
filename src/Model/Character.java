@@ -101,6 +101,9 @@ public abstract class Character extends ElementLab {
 		// update();
 	}
 
+	/**
+	 * Methode abstraiteaux element de type Character d attaquer
+	 */
 	public abstract void attack();
 
 	public void dieM() {

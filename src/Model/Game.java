@@ -11,15 +11,37 @@ import View.AffichageGraphiqueLabyrinthe;
 import View.GamePainter;
 import View.GraphicalInterface;
 
+/**
+ * Classe Game qui instancie le jeu
+ *
+ */
 public class Game {
-
+	/**
+	 * Attribut de type GraphicalInterface permettant l affichage du labyrinthe
+	 */
 	private GraphicalInterface gui;
+	/**
+	 * Attribut de type Controller permettant au joueur de controler le heros
+	 */
 	private Controller controller;
+	/**
+	 * Attribut de type GamePainter permettant de dessiner dans l interface graphique
+	 */
 	private GamePainter gamePainter;
-	private AffichageConsole affichageConsole;
+	/**
+	 * Attribut de type booleen qui indique si le jeu est termine ou on
+	 */
 	private boolean jeuFini;
+	/**
+	 * Attribut de type char qui indique la difficulte du jeu
+	 */
 	private char difficulty;
-
+/**
+ * Constructeur de la classe Game
+ * @param gui affiche les sprites si vaut vrai
+ * @param difficulty difficulte du jeu
+ * @throws IOException
+ */
 	public Game(boolean gui, char difficulty) throws IOException {
 		this.init(gui, difficulty);
 		if (gui) {
@@ -29,23 +51,29 @@ public class Game {
 
 			this.gui.paint();
 		} else {
-			this.affichageConsole = new AffichageConsole(Labyrinth.getInstance());
-			Labyrinth.getInstance().getHeros().addObserver(this.affichageConsole);
-
-			this.affichageConsole.draw();
+			AffichageConsole affichageConsole = new AffichageConsole(Labyrinth.getInstance());
+			Labyrinth.getInstance().getHeros().addObserver(affichageConsole);
+			affichageConsole.draw();
 		}
 
 	}
-
+	/**
+	 * Methode qui initialise les attributs communs du constructeur
+	 * @param gui affiche les sprites si vaut vrai
+	 * @param difficulty difficulte du jeu
+	 * @throws IOException
+	 */
 	public void init(boolean gui, char difficulty) throws IOException {
 		Labyrinth.getInstance();
-		
 		this.jeuFini = false;
 		this.difficulty = difficulty;
 		this.controller = new Controller(Labyrinth.getInstance().getHeros(), this);
 
 	}
-
+/**
+ * Methode permettant le deroulement du jeu tant que celui ci n est pas termine
+ * @throws InterruptedException
+ */
 	public void play() throws InterruptedException {
 		Scanner sc = new Scanner(System.in);
 		Timer t = new Timer();
@@ -92,7 +120,10 @@ public class Game {
 		;
 
 	}
-
+/**
+ * Methode indiquant si le jeu est termine ou non
+ * @return true si le tresor est recupere ou le heros est mort
+ */
 	public boolean isEndGame() {
 		if (Labyrinth.getInstance().getHeros().isDead() || Labyrinth.getInstance().getTreasure().isTreasureOwned()) {
 			endGame();
@@ -101,7 +132,9 @@ public class Game {
 		return false;
 
 	}
-
+/**
+ * Methode qui met un terme au jeu
+ */
 	public void endGame() {
 		System.out.println("Jeu fini");
 		jeuFini = true;
@@ -126,13 +159,6 @@ public class Game {
 		this.gamePainter = gamePainter;
 	}
 
-	public AffichageConsole getAffichageConsole() {
-		return affichageConsole;
-	}
-
-	public void setAffichageConsole(AffichageConsole affichageConsole) {
-		this.affichageConsole = affichageConsole;
-	}
 
 	public boolean isJeuFini() {
 		return jeuFini;

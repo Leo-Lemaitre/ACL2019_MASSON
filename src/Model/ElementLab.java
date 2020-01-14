@@ -73,6 +73,11 @@ public abstract class ElementLab extends Observable {
 		return "" + type + "";
 	}
 
+	/**
+	 * Methode qui retourne la distance cartesienne entre deux elements du labyrinthe
+	 * @param e element avec lequel on calcule la distance
+	 * @return la distance avec l element e
+	 */
 	public double distanceWithElement(ElementLab e) {
 		return Math.sqrt((e.getPosLigne() - this.posLigne) * (e.getPosLigne() - this.posLigne)
 				+ (e.getPosColonne() - this.posColonne) * ((e.getPosColonne() - this.posColonne)));

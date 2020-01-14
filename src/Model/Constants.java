@@ -1,7 +1,10 @@
 package Model;
 
 import java.util.List;
-
+/**
+ *  Classe qui repertorie toutes les constantes utilisees dans le projet
+ *
+ */
 public final class Constants {
 
 	public static final char WALL = 'X';
