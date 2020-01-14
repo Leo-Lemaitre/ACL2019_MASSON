@@ -38,10 +38,10 @@ public class DrawingPanel extends JPanel {
 	private int width, height;
 
 	/**
-	 * constructeur Il construit les images pour doublebuffering ainsi que le Panel
+	 * Constructeur de la classe DrawingPanel. Il construit les images pour doublebuffering ainsi que le Panel
 	 * associe. Les images stockent le painter et on demande au panel la mise a jour
 	 * quand le painter est fini
-	 * 
+	 * @param painter
 	 */
 	public DrawingPanel(GamePainter painter) {
 		super();

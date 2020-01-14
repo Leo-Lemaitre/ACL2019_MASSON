@@ -1,5 +1,10 @@
 package Model;
 
+/**
+ * Classe Tresor qui herite de la classe Trigger qui correspond a l unique
+ * tresor present sur le labyrinthe
+ *
+ */
 public class Treasure extends Trigger {
 
 	boolean treasureOwned;
@@ -8,10 +13,10 @@ public class Treasure extends Trigger {
 		super(posLigne, posColonne);
 		this.type = Constants.TREASURE;
 		this.treasureOwned = false;
-		this.imageName="treasureSprite";
+		this.imageName = "treasureSprite";
 	}
 
-	// @Override
+	
 	public void effect() {
 		treasureOwned = true;
 		System.out.println("Tresor trouve : FIN DU JEU");

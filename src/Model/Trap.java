@@ -14,8 +14,8 @@ public class Trap extends Trigger {
 	 * posLigne en reutilisant le superconstructeur de la classe Trigger en
 	 * precisant le type trap
 	 * 
-	 * @param posLigne
-	 * @param posColonne
+	 * @param posLigne posX
+	 * @param posColonne posY
 	 */
 
 	public Trap(int posLigne, int posColonne) {

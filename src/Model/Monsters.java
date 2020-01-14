@@ -14,9 +14,9 @@ public class Monsters extends Character {
 	 * posLigne et en lui donnant des points de vie en reutilisant le
 	 * superconstructeur de la classe Character en precisant le type monster
 	 * 
-	 * @param posLigne
-	 * @param posColonne
-	 * @param lifepoint
+	 * @param posLigne posX 
+	 * @param posColonne posY 
+	 * @param lifepoint nombre de points de vie
 	 */
 
 	public Monsters(int posLigne, int posColonne, int lifepoint) {
@@ -30,8 +30,8 @@ public class Monsters extends Character {
 	 * Methode permettant de verifier si le deplacement est possible en s assurant
 	 * que la case est vide
 	 * 
-	 * @param direction
-	 * @return boolean
+	 * @param direction direction dans laquelle va s effectuer le deplacement
+	 * @return boolean vaut vrai si le deplacement est possible
 	 */
 
 	@Override
