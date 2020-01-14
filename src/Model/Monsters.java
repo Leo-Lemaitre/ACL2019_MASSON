@@ -27,8 +27,8 @@ public class Monsters extends Character {
 	}
 
 	/**
-	 * Methode permettant de verifier si le deplacement est possible en s
-	 * assurant que la case est vide
+	 * Methode permettant de verifier si le deplacement est possible en s assurant
+	 * que la case est vide
 	 * 
 	 * @param direction
 	 * @return boolean
@@ -78,6 +78,10 @@ public class Monsters extends Character {
 
 		return direction;
 	}
+
+	/**
+	 * Methode permettant aux monstres d attaquer le hero
+	 */
 
 	public void attack() {
 		for (int[] direction : Constants.DIRECTIONS) {
