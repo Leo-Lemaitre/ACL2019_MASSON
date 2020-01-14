@@ -19,10 +19,15 @@ Manuel d'utilisation et d'installation :
    
    Pour jouer : 
      1) ouvrir le fichier jar
+     
      2) choisir un niveau de difficulté dans la fenêtre qui s'ouvre
+     
      3) le labyrinthe s'ouvre, utiliser les flèches du clavier pour déplacer le héros 
+     
      4) pour attaquer un monstre, appuyer autant de fois que nécessaire sur la barre d'espace
+     
      5) quand le héros arrive au trésor ou s'il meurt, le jeu fini 
+
 
 
 
