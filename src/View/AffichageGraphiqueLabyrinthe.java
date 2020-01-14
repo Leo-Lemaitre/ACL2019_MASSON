@@ -126,6 +126,7 @@ public class AffichageGraphiqueLabyrinthe implements GamePainter {
 			
 			
 		if (e instanceof Treasure) {
+			decalagex=15;
 			decalagey=15;
 		}
 		if (e instanceof Trap) {
