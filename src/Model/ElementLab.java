@@ -31,7 +31,6 @@ public abstract class ElementLab extends Observable {
 	 * 
 	 * @param posLigne
 	 * @param posColonne
-	 * @param lifepoint
 	 */
 	public ElementLab(int posLigne, int posColonne) {
 		this.posLigne = posLigne;
