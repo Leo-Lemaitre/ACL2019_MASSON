@@ -17,15 +17,5 @@ public class Trap extends Trigger {
 		System.out.println("Piege declenche");
 	}
 
-	
-	/*
-	 * if(Heros.getPosLigne() == this.posLigne && Heros.getPosColonne()==
-	 * this.posColonne ) {
-	 * 
-	 * Labyrinthe.setTypeOfCase(this.getPosLigne(), this.getPosColonne(),
-	 * Utilitaires.VIDE); Heros.setPosLigne(); Heros.setPosColonne();
-	 * Labyrinthe.setTypeOfCase(this.getPosLigne(), this.getPosColonne(), type);
-	 * update(); } else { System.out.println("Deplacement impossible"); } }
-	 */
 
 }

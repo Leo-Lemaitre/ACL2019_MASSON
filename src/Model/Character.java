@@ -16,7 +16,8 @@ public abstract class Character extends ElementLab {
 	 */
 	protected int lifePoint;
 	/**
-	 * attribut protege indique la direction vers laquelle est oriente le personnage
+	 * attribut protege indique la direction vers laquelle est oriente le
+	 * personnage
 	 */
 	protected int[] direction;
 
@@ -37,8 +38,8 @@ public abstract class Character extends ElementLab {
 	}
 
 	/**
-	 * Methode permettant de changer la position du character dans une direction si
-	 * ce changement est possible
+	 * Methode permettant de changer la position du character dans une direction
+	 * si ce changement est possible
 	 * 
 	 * @param direction
 	 */
@@ -100,36 +101,7 @@ public abstract class Character extends ElementLab {
 		// update();
 	}
 
-	public void attackM() {
-
-		for (int[] direction : Constants.DIRECTIONS) {
-			if (Labyrinth.getInstance().getElementOnSquare(this.posLigne + direction[0], this.posColonne + direction[1])
-					.getType() == Constants.MONSTER) {
-				Monsters m = ((Monsters) Labyrinth.getInstance().getElementOnSquare(this.posLigne + direction[0],
-						this.posColonne + direction[1]));
-				m.loseLifePoint(4);
-				if (m.isDead()) {
-					m.dieM();
-
-				}
-			}
-
-		}
-
-	}
-
-	public void attackH() {
-
-		for (int[] direction : Constants.DIRECTIONS) {
-			if (Labyrinth.getInstance().getElementOnSquare(this.posLigne + direction[0], this.posColonne + direction[1])
-					.getType() == Constants.HERO) {
-
-				Labyrinth.getInstance().getHeros().loseLifePoint(1);
-
-			}
-
-		}
-	}
+	public abstract void attack();
 
 	public void dieM() {
 		Labyrinth.getListMonsters().remove(this);

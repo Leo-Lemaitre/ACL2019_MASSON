@@ -44,7 +44,7 @@ public class Controller implements KeyListener {
 			modelHeros.changePosition(Constants.RIGHT);
 			break;
 		case KeyEvent.VK_SPACE:
-			modelHeros.attackM();
+			modelHeros.attack();
 
 			break;
 		default:
@@ -62,7 +62,7 @@ public class Controller implements KeyListener {
 		if (!game.isEndGame()) {
 			for (Monsters m : Labyrinth.getListMonsters()) {
 				if (m.distanceWithElement(Labyrinth.getInstance().getHeros()) == 1) {
-					m.attackH();
+					m.attack();
 				}
 
 				else {

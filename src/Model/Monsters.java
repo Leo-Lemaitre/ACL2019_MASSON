@@ -48,8 +48,8 @@ public class Monsters extends Character {
 	public int[] getDirectionCloserToTheHero() {
 		double min = this.distanceWithElement(Labyrinth.getInstance().getHeros());
 		int[] direction = { 0, 0 };
-		//si il est à portée il ne se deplace pas
-		if(min==1){
+		// si il est à portée il ne se deplace pas
+		if (min == 1) {
 			return direction;
 		}
 		// on essaie de diminuer la distance
@@ -78,6 +78,18 @@ public class Monsters extends Character {
 
 		return direction;
 	}
-	
-	
+
+	public void attack() {
+		for (int[] direction : Constants.DIRECTIONS) {
+			if (Labyrinth.getInstance().getElementOnSquare(this.posLigne + direction[0], this.posColonne + direction[1])
+					.getType() == Constants.HERO) {
+
+				Labyrinth.getInstance().getHeros().loseLifePoint(1);
+
+			}
+
+		}
+
+	}
+
 }
