@@ -11,20 +11,53 @@ import Model.Hero;
 import Model.Labyrinth;
 import Model.Monsters;
 
-public class Controller implements KeyListener {
+/**
+ * Classe Controller qui herite de la classe KeyListener qui gere
+ * l evolution du heros dans le jeu
+ */
 
+public class Controller implements KeyListener {
+	
+	/**
+	 * attribut protege modelHeros qui correspond au heros
+	 */
+	
 	private Hero modelHeros;
+	
+	/**
+	 * attribut protege game qui contient le jeu
+	 */
+	
 	private Game game;
 
+	/**
+	 * Constructeur qui initialise un Controller 
+	 * @param model
+	 * @param g
+	 */
 	public Controller(Hero model, Game g) {
 		this.modelHeros = model;
 		this.game = g;
 	}
+	/**
+	 * Methode utilisee lorsqu une touche a ete tapee 
+	 * 
+	 * @param e
+	 */
 
 	@Override
 	public void keyTyped(KeyEvent e) {
 	}
 
+	
+	/**
+	 * Methode utilisee lorsqu une touche est enfoncee 
+	 * Elle recupere la touche enfoncee et change la 
+	 * position du heros en fonction de celle ci
+	 * Elle appelle la methode attack si 
+	 * le joueur appuie sur la barre espace
+	 * @param e
+	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int keyCode = e.getKeyCode();
@@ -53,10 +86,22 @@ public class Controller implements KeyListener {
 		}
 
 	}
+	
+	/**
+	 * Methode utilisee lorsqu une touche a ete relachee 
+	 * 
+	 * @param e
+	 */
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 	}
+
+	/**
+	 * Methode evolve permettant aux monstres d aller attaquer le 
+	 * heros si ils sont a une distance euclidienne de 1  
+	 * 
+	 */
 
 	public void evolve() {
 		if (!game.isEndGame()) {
@@ -79,6 +124,13 @@ public class Controller implements KeyListener {
 
 	}
 
+	/**
+	 * Methode evolve permettant de changer
+	 * la position du heros  
+	 * 
+	 * @param c
+	 */
+	
 	public void evolve(String c) {
 		if (c.equals("Haut")) {
 			this.modelHeros.changePosition(Constants.UP);

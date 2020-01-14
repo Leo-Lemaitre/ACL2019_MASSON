@@ -17,11 +17,7 @@ import Model.Trap;
 import Model.Treasure;
 import Model.Wall;
 
-//Enlever le labyrinthe car singleton
 public class AffichageGraphiqueLabyrinthe implements GamePainter {
-
-	// public ImageIcon Arbre1 = new ImageIcon("src/images/Arbre1.png");
-	// Image imArbre1 = Arbre1.getImage();
 
 	public AffichageGraphiqueLabyrinthe() {
 
