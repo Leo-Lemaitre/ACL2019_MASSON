@@ -4,20 +4,19 @@ import java.util.Observable;
 
 /**
  * Classe abstraite ElementLab qui herite de la classe Observable qui contient
- * tous les elements qui interagissent sur le labyrinthe 
+ * tous les elements qui interagissent sur le labyrinthe
  */
 
 public abstract class ElementLab extends Observable {
 
 	/**
-	 * attributs proteges de position et de type des elements 
+	 * attributs proteges de position et de type des elements
 	 */
 	protected int posLigne;
 	protected int posColonne;
 	protected char type;
 	protected String imageName;
-	
-	
+
 	public String getImageName() {
 		return imageName;
 	}
@@ -27,8 +26,10 @@ public abstract class ElementLab extends Observable {
 	}
 
 	/**
-	 * Constructeur qui initialise un element a une position donnee posLigne posLigne 
-	 * @param posLigne 
+	 * Constructeur qui initialise un element a une position donnee posLigne
+	 * posLigne
+	 * 
+	 * @param posLigne
 	 * @param posColonne
 	 * @param lifepoint
 	 */
@@ -36,7 +37,7 @@ public abstract class ElementLab extends Observable {
 		this.posLigne = posLigne;
 		this.posColonne = posColonne;
 	}
-	
+
 	public int getPosLigne() {
 		return posLigne;
 	}
@@ -52,7 +53,7 @@ public abstract class ElementLab extends Observable {
 	public void setPosColonne(int posColonne) {
 		this.posColonne = posColonne;
 	}
-	
+
 	public char getType() {
 		return type;
 	}
@@ -61,19 +62,20 @@ public abstract class ElementLab extends Observable {
 		this.type = type;
 	}
 
-	public void update()  {
-	
+	public void update() {
+
 		setChanged();
 		notifyObservers();
 	}
 
 	@Override
 	public String toString() {
-		return ""+ type +"";
+		return "" + type + "";
 	}
-	
-	public double distanceWithElement(ElementLab e){
-		return Math.sqrt((e.getPosLigne() - this.posLigne) * (e.getPosLigne() - this.posLigne) + (e.getPosColonne() - this.posColonne) * ((e.getPosColonne() - this.posColonne)));
+
+	public double distanceWithElement(ElementLab e) {
+		return Math.sqrt((e.getPosLigne() - this.posLigne) * (e.getPosLigne() - this.posLigne)
+				+ (e.getPosColonne() - this.posColonne) * ((e.getPosColonne() - this.posColonne)));
 	}
-	
+
 }

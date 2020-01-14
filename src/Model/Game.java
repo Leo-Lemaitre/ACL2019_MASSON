@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import Controler.Controller;
+import Controller.Controller;
 import View.AffichageConsole;
 import View.AffichageGraphiqueLabyrinthe;
 import View.GamePainter;
@@ -21,7 +21,7 @@ public class Game {
 	private char difficulty;
 
 	public Game(boolean gui, char difficulty) throws IOException {
-		this.init(gui,difficulty);
+		this.init(gui, difficulty);
 		if (gui) {
 			this.gamePainter = new AffichageGraphiqueLabyrinthe();
 			this.gui = new GraphicalInterface(this.gamePainter, this.controller);
@@ -37,11 +37,12 @@ public class Game {
 
 	}
 
-	public void init(boolean gui,char difficulty) throws IOException {
+	public void init(boolean gui, char difficulty) throws IOException {
 		Labyrinth.getInstance();
-		this.controller = new Controller(Labyrinth.getInstance().getHeros(), this);
+		
 		this.jeuFini = false;
-		this.difficulty=difficulty;
+		this.difficulty = difficulty;
+		this.controller = new Controller(Labyrinth.getInstance().getHeros(), this);
 
 	}
 
@@ -56,7 +57,7 @@ public class Game {
 			@Override
 			public void run() {
 				h.update();
-				if(jeuFini){
+				if (jeuFini) {
 					this.cancel();
 				}
 
@@ -66,24 +67,29 @@ public class Game {
 			@Override
 			public void run() {
 				a.evolve();
-				if(jeuFini){
+				if (jeuFini) {
 					this.cancel();
 				}
 
 			}
 		};
-		timer.schedule(tache1, startTime, 10);
-		switch(difficulty){
-		case 'e':
-			timer.schedule(tache2, startTime, Constants.SPEEDMONSTERSEASY);
-			break;
-		case 'i':
-			timer.schedule(tache2, startTime, Constants.SPEEDMONSTERSINTERMEDIATE);
-			break;
-		case 'h':
-			timer.schedule(tache2, startTime, Constants.SPEEDMONSTERSHARD);
-			break;
+		try {
+
+			timer.schedule(tache1, startTime, 10);
+			switch (difficulty) {
+			case 'e':
+				timer.schedule(tache2, startTime, Constants.SPEEDMONSTERSEASY);
+				break;
+			case 'i':
+				timer.schedule(tache2, startTime, Constants.SPEEDMONSTERSINTERMEDIATE);
+				break;
+			case 'h':
+				timer.schedule(tache2, startTime, Constants.SPEEDMONSTERSHARD);
+				break;
+			}
+		} catch (Exception e) {
 		}
+		;
 
 	}
 

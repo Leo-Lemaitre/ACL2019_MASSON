@@ -42,9 +42,10 @@ public class Difficulty {
 			public void actionPerformed(ActionEvent e) {
 				Game g;
 				try {
-					a.frame.setVisible(false);
+					
 					g = new Game(true, 'e');
 					g.play();
+					a.frame.setVisible(false);
 
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
@@ -63,9 +64,9 @@ public class Difficulty {
 			public void actionPerformed(ActionEvent e) {
 				Game g;
 				try {
-					a.frame.setVisible(false);
 					g = new Game(true, 'i');
 					g.play();
+					a.frame.setVisible(false);
 
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
@@ -84,9 +85,9 @@ public class Difficulty {
 			public void actionPerformed(ActionEvent e) {
 				Game g;
 				try {
-					a.frame.setVisible(false);
 					g = new Game(true, 'h');
 					g.play();
+					a.frame.setVisible(false);
 
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block

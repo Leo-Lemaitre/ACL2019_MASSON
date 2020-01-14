@@ -7,7 +7,7 @@ import java.util.Observer;
 
 import javax.swing.JFrame;
 
-import Controler.Controller;
+import Controller.Controller;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas

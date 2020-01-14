@@ -11,11 +11,13 @@ import java.util.Observable;
 
 public abstract class Character extends ElementLab {
 
-	//
 	/**
 	 * attribut protege lifePoint les points de vie du character
 	 */
 	protected int lifePoint;
+	/**
+	 * attribut protege indique la direction vers laquelle est oriente le personnage
+	 */
 	protected int[] direction;
 
 	/**
@@ -35,8 +37,8 @@ public abstract class Character extends ElementLab {
 	}
 
 	/**
-	 * Methode permettant de changer la position du character dans une direction
-	 * si ce changement est possible
+	 * Methode permettant de changer la position du character dans une direction si
+	 * ce changement est possible
 	 * 
 	 * @param direction
 	 */
@@ -49,11 +51,11 @@ public abstract class Character extends ElementLab {
 			this.setPosColonne(this.getPosColonne() + direction[1]);
 			this.direction = direction;
 			Labyrinth.getInstance().setElementOnSquare(this.getPosLigne(), this.getPosColonne(), this);
-			//update();
+			// update();
 		} else {
 			System.out.println("Deplacement impossible");
 		}
-		
+
 	}
 
 	public int[] getDirection() {
@@ -83,26 +85,26 @@ public abstract class Character extends ElementLab {
 
 	public void setLifePoint(int lifePoint) {
 		this.lifePoint = lifePoint;
-	//	update();
+		// update();
 	}
 
-	public void addLifePoint(int lifePoint){
+	public void addLifePoint(int lifePoint) {
 		this.lifePoint += lifePoint;
-		//update();
+		// update();
 	}
 
-	public void loseLifePoint(int lifePoint)  {
+	public void loseLifePoint(int lifePoint) {
 		this.lifePoint -= lifePoint;
 		if (this.lifePoint < 0)
 			this.lifePoint = 0;
-		//update();
+		// update();
 	}
 
 	public void attackM() {
 
 		for (int[] direction : Constants.DIRECTIONS) {
 			if (Labyrinth.getInstance().getElementOnSquare(this.posLigne + direction[0], this.posColonne + direction[1])
-					.getType() == Constants.MONSTER){
+					.getType() == Constants.MONSTER) {
 				Monsters m = ((Monsters) Labyrinth.getInstance().getElementOnSquare(this.posLigne + direction[0],
 						this.posColonne + direction[1]));
 				m.loseLifePoint(4);
@@ -113,17 +115,17 @@ public abstract class Character extends ElementLab {
 			}
 
 		}
-		
+
 	}
-	
+
 	public void attackH() {
 
 		for (int[] direction : Constants.DIRECTIONS) {
 			if (Labyrinth.getInstance().getElementOnSquare(this.posLigne + direction[0], this.posColonne + direction[1])
-					.getType() == Constants.HERO){
-				
+					.getType() == Constants.HERO) {
+
 				Labyrinth.getInstance().getHeros().loseLifePoint(1);
-				
+
 			}
 
 		}
@@ -134,6 +136,5 @@ public abstract class Character extends ElementLab {
 		Labyrinth.getInstance().setElementOnSquare(this.posLigne, this.posColonne,
 				new Empty(this.posLigne, this.posColonne));
 	}
-	
 
 }

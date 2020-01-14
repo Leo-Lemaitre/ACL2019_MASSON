@@ -1,9 +1,0 @@
-Liste des fonctionnalités : 
-
-
-v0 : se déplacer, créer labyrinthe, afficher_labyrinthe
-v1 : implémenter moteur graphique
-v2 : cases déclenchables, montres immobiles
-v3 : fin du jeu avec la mort du héros, déplacements (aléatoires) des monstres, collision avec un monstre, attaques des monstres
-v4 : attaque du héros, affichage attaque, mise en place d'une case trésor
-v5 : réglage du niveau de difficulté, déplacements intelligents des monstres
